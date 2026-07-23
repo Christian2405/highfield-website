@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highfield Country Estate — Retirement Living in Te Awamutu</title>
+  <meta name="description" content="Discover your freedom at Highfield Country Estate, a luxurious retirement village in Te Awamutu, New Zealand.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://d3e5t04pmhhh45.cloudfront.net/logos/968/dark.v20250306110235.png">
+  <style>
+    /* ---- Hero text: smooth fade-in at 12s ---- */
+    .hero-content { opacity: 0; transform: translateY(24px); transition: opacity 1.5s ease-out, transform 1.5s ease-out; }
+    .hero-content.visible { opacity: 1; transform: translateY(0); }
+    /* Kill child animations so they don't override the parent fade */
+    .hero h1, .hero .subtitle, .hero .section-label { animation: none !important; opacity: 1 !important; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="Highfield Country Estate" style="height: 80px; width: auto; display: block; background: transparent;">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="villas.html">Our Villas</a></li>
+          <li><a href="available-villas.html">Available Villas</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="te-awamutu.html">Te Awamutu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="nav-cta">Book a Viewing</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO WITH VIMEO VIDEO ===== -->
+  <section class="hero">
+    <div class="hero-video-container">
+      <iframe src="https://player.vimeo.com/video/844796980?h=5c3e5e5c5e&autoplay=1&loop=1&autopause=0&background=1&muted=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="hero-content">
+      <span class="section-label" style="color: var(--gold-light);">Te Awamutu, New Zealand</span>
+      <h1 data-edit="index.heroTitle">The Freedom of Living Well</h1>
+      <p class="subtitle" data-edit="index.heroTagline">Highfield Country Estate</p>
+    </div>
+  </section>
+
+  <!-- ===== MISSION STATEMENT ===== -->
+  <section class="section-white" style="padding: 5rem 0;">
+    <div class="container-tight">
+      <div class="text-center">
+        <span class="section-label">Our Promise</span>
+        <h2 class="section-title centered" style="font-style: italic; font-weight: 300; font-size: clamp(1.6rem, 3.5vw, 2.4rem); line-height: 1.5;" data-edit="index.heading1">
+          To provide the facilities and environment that allow you the freedom to live the lifestyle you enjoy.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE LODGE ===== -->
+  <section class="section-cream">
+    <div class="container">
+      <div class="feature-pair">
+        <div class="feature-image">
+          <img src="https://rocketspark.pictures/CF-a0fada23-c4d1-42cc-8fb0-dce01296a823/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/edc7ed4045e20cb7578a1e4f7e120535.jpg" alt="The Lodge at Highfield">
+        </div>
+        <div class="feature-text">
+          <span class="section-label">Heart of the Estate</span>
+          <h2 data-edit="index.heading2">The Lodge</h2>
+          <p data-edit="index.para1">Our beautifully appointed lodge is the heart of Highfield Country Estate. With comfortable dining facilities, lounge areas, and spaces for entertainment, The Lodge provides the perfect setting for both relaxation and socialising.</p>
+          <p data-edit="index.para2">Whether you're enjoying afternoon tea, attending a hosted event, or simply taking in the peaceful surroundings, The Lodge creates a welcoming atmosphere for all our residents.</p>
+          <a href="facilities.html" class="btn btn-outline" style="margin-top: 0.5rem;">Explore Facilities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GARDENS ===== -->
+  <section class="section-white">
+    <div class="container">
+      <div class="feature-pair reverse">
+        <div class="feature-image">
+          <img src="https://rocketspark.pictures/CF-a0fada37-031a-4834-889f-451ecf7b7749/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/ab5c65bf96ad320dcb6ba3081ab6c932.jpg" alt="Highfield Gardens">
+        </div>
+        <div class="feature-text">
+          <span class="section-label">Natural Beauty</span>
+          <h2 data-edit="index.heading3">Our Gardens</h2>
+          <p data-edit="index.para3">Set within beautifully landscaped grounds, Highfield's gardens offer tranquil spaces for walking, reflection, and enjoying nature. Our team works tirelessly to maintain the grounds, creating seasonal beauty throughout the year.</p>
+          <p data-edit="index.para4">From established trees to carefully planted flower beds, every corner of our gardens has been designed to provide peace and inspiration for our residents and their visitors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITIES ===== -->
+  <section class="section-cream">
+    <div class="container">
+      <div class="feature-pair">
+        <div class="feature-image">
+          <img src="https://rocketspark.pictures/CF-a0fada29-d780-4fbc-a0b5-84eb070a6fa5/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/7f3175b26575e67864157240330cb873.jpg" alt="Activities at Highfield">
+        </div>
+        <div class="feature-text">
+          <span class="section-label">Community Life</span>
+          <h2 data-edit="index.heading4">Activities &amp; Community</h2>
+          <p data-edit="index.para5">From bowls and social gatherings to cultural events and outdoor activities, there's always something happening at Highfield. Our active community embraces new experiences and values the friendships formed here.</p>
+          <p data-edit="index.para6">Whether you're a keen bowler, enjoy card games, or prefer quiet hobbies, our lifestyle program is designed to suit your interests and keep you engaged with the Highfield community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VILLAS SHOWCASE ===== -->
+  <section class="section-white">
+    <div class="container">
+      <div class="feature-pair reverse">
+        <div class="feature-image">
+          <img src="https://rocketspark.pictures/CF-a0fada14-8223-42e5-90b7-cc4ac67b92ac/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/c8ad95cf41478bdef92317811186634d.jpg" alt="Villa Exterior">
+        </div>
+        <div class="feature-text">
+          <span class="section-label">Designed for Living</span>
+          <h2 data-edit="index.heading5">Modern Comfort Meets Thoughtful Design</h2>
+          <p data-edit="index.para7">Our villas are purpose-built for retirement living, combining contemporary design with accessibility and comfort. Each villa is thoughtfully planned to maximise your living space and quality of life.</p>
+          <p data-edit="index.para8">With a range of floor plans from 112sqm to 172sqm, there's a villa perfect for your lifestyle. Features include modern kitchens, spacious living areas, and outdoor terraces to enjoy the beautiful Te Awamutu scenery.</p>
+          <a href="villas.html" class="btn btn-outline" style="margin-top: 0.5rem;">Explore Villas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section-cream">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="section-label">Gallery</span>
+        <h2 class="section-title centered" data-edit="index.heading6">Life at Highfield Country Estate</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="grid-card">
+          <img src="https://rocketspark.pictures/CF-a0fada1e-2b29-4f26-a1e4-b51cb29b3406/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/17904c80bee8ea301909bb1b33410ad9.jpg" alt="Highfield Estate Gallery">
+        </div>
+        <div class="grid-card">
+          <img src="https://rocketspark.pictures/CF-a0fada1f-905d-4dff-965c-179766e7de4b/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/9078ade1f610ec90c364ad7da40259dc.jpg" alt="Highfield Estate Gallery">
+        </div>
+        <div class="grid-card">
+          <img src="https://rocketspark.pictures/CF-a0fada21-38b5-4422-8904-c9c498edcbc9/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/1a5025eb36b0789d0f4267bba2011afb.jpg" alt="Highfield Estate Gallery">
+        </div>
+        <div class="grid-card">
+          <img src="https://rocketspark.pictures/CF-a0fada23-c4d1-42cc-8fb0-dce01296a823/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/edc7ed4045e20cb7578a1e4f7e120535.jpg" alt="Highfield Estate Gallery">
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="gallery.html" class="btn btn-outline">View All Photos &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AWARDS ===== -->
+  <section class="section-cream" style="padding: 5rem 0;">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-title centered" data-edit="index.heading7">Award-Winning Village</h2>
+        <p style="max-width: 650px; margin: 0 auto;" data-edit="index.para9">Highfield Country Estate has been consistently recognised as one of New Zealand's finest retirement villages at the annual NZ's Best Awards.</p>
+      </div>
+      <div id="hf-awards" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 1.5rem; max-width: 900px; margin: 0 auto;"></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg" style="background-image: url('https://rocketspark.pictures/CF-a0fada1e-2b29-4f26-a1e4-b51cb29b3406/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/17904c80bee8ea301909bb1b33410ad9.jpg');"></div>
+    <div class="cta-banner-content">
+      <span class="section-label" style="color: var(--gold-light);">It's Your Time</span>
+      <h2 data-edit="index.heading8">Embrace the Freedom of Living Well</h2>
+      <p data-edit="index.para10">Discover why Highfield Country Estate is the perfect place to call home.</p>
+      <a href="contact.html" class="btn btn-light">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <a href="index.html"><img src="images/logo.svg" alt="Highfield Country Estate" style="height: 100px; width: auto; display: block; background: transparent; margin-bottom: 1rem;"></a>
+          </div>
+          <p data-edit="index.para11">A retirement village of distinction in the heart of Te Awamutu, offering spacious villas, beautiful grounds, and a warm, welcoming community.</p>
+          <div class="footer-badges">
+            <div class="footer-badge">RVA Member</div>
+            <div class="footer-badge">Est. Te Awamutu</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="facilities.html">Facilities &amp; Activities</a>
+          <a href="villas.html">Our Villas</a>
+          <a href="available-villas.html">Available Villas</a>
+          <a href="testimonials.html">Testimonials</a>
+          <a href="news.html">Latest News</a>
+          <a href="te-awamutu.html">Te Awamutu</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="villas.html#floor-plans">Villa Floor Plans</a>
+          <a href="gallery.html">Photo Gallery</a>
+          <a href="contact.html#faq">FAQ</a>
+          <a href="contact.html">Book a Viewing</a>
+          <a href="staff-login.html">Staff Login</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <p><strong style="color: rgba(255,255,255,0.9);">Phone:</strong> 07 871 2020</p>
+          <p><strong style="color: rgba(255,255,255,0.9);">Address:</strong> 397 Swarbrick Drive,<br>Te Awamutu 3800</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Highfield Country Estate. All rights reserved. | Retirement Villages Association of New Zealand | <a href="staff-login.html" style="color: rgba(255,255,255,0.5);">Staff Login</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== STICKY SIDEBAR ===== -->
+  <aside class="sticky-sidebar" id="stickySidebar">
+    <button class="sidebar-close" onclick="document.getElementById('stickySidebar').style.display='none'" aria-label="Close">&times;</button>
+    <h4>Book a Viewing</h4>
+    <p data-edit="index.para12">Experience Highfield Country Estate for yourself</p>
+    <a href="contact.html" class="btn btn-light">Register Interest</a>
+  </aside>
+
+  <script src="js/site-data.js"></script>
+  <script src="js/cms.js"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    // Reveal hero text after 12 seconds with smooth fade-in (after video logo fades)
+    setTimeout(() => {
+      document.querySelector('.hero-content').classList.add('visible');
+    }, 12000);
+
+    // Hero video: skip the glint at the start and slow playback for easier viewing
+    (function () {
+      var iframe = document.querySelector('.hero-video-container iframe');
+      if (!iframe || typeof Vimeo === 'undefined') return;
+      var player = new Vimeo.Player(iframe);
+      var SKIP_TO = 3; // seconds — jumps past the glint at the start
+
+      player.ready().then(function () {
+        player.setCurrentTime(SKIP_TO).catch(function () {});
+        // Slow the video down so scenes linger longer (0.7x speed)
+        player.setPlaybackRate(0.7).catch(function () {});
+      });
+
+      // When the video loops back to the start, skip the glint again
+      player.on('timeupdate', function (data) {
+        if (data.seconds < SKIP_TO - 0.3) {
+          player.setCurrentTime(SKIP_TO).catch(function () {});
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

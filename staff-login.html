@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Login — Highfield Country Estate</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://d3e5t04pmhhh45.cloudfront.net/logos/968/dark.v20250306110235.png">
+  <style>
+    body { background: var(--primary-green); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .login-box {
+      background: white; padding: 3rem 2.5rem; border-radius: 4px; max-width: 400px; width: 90%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .login-box img { height: 110px; width: auto; display: block; margin: 0 auto 1.5rem; }
+    .login-box h1 { font-family: var(--font-serif); font-size: 1.6rem; color: var(--primary-green); margin-bottom: 0.5rem; }
+    .login-box p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 1.5rem; }
+    .login-box input {
+      width: 100%; padding: 0.9rem 1rem; font-size: 1.05rem; border: 1px solid #ccc; border-radius: 3px;
+      margin-bottom: 1rem; font-family: var(--font-sans, 'Lato', sans-serif); box-sizing: border-box;
+    }
+    .login-box button {
+      width: 100%; padding: 0.9rem; font-size: 1rem; background: var(--primary-green); color: white;
+      border: none; border-radius: 3px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+    }
+    .login-box button:hover { background: var(--accent-green, #2C4070); }
+    .login-error { color: #c0392b; font-size: 0.85rem; margin-top: 0.75rem; display: none; }
+    .back-link { display: inline-block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-mid); }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="images/logo-official.png" alt="Highfield Country Estate">
+    <h1>Staff Login</h1>
+    <p>Enter the staff password to manage website content.</p>
+    <form id="loginForm">
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" autofocus>
+      <button type="submit">Log In</button>
+      <p class="login-error" id="loginError">Incorrect password. Please try again.</p>
+    </form>
+    <a href="index.html" class="back-link">&larr; Back to website</a>
+  </div>
+
+  <script>
+    // To change the staff password, edit the value below.
+    var STAFF_PASSWORD = 'Highfield2026';
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var entered = document.getElementById('password').value;
+      if (entered === STAFF_PASSWORD) {
+        sessionStorage.setItem('hf-staff-auth', '1');
+        window.location.href = 'staff-dashboard.html';
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    });
+  </script>
+</body>
+</html>

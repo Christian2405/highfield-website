@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Highfield Country Estate</title>
+  <meta name="description" content="Browse photos of life at Highfield Country Estate — our villas, gardens, lodge, and community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://d3e5t04pmhhh45.cloudfront.net/logos/968/dark.v20250306110235.png">
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid img { height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="Highfield Country Estate" style="height: 80px; width: auto; display: block; background: transparent;">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="villas.html">Our Villas</a></li>
+          <li><a href="available-villas.html">Available Villas</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="te-awamutu.html">Te Awamutu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="nav-cta">Book a Viewing</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="hero page-hero">
+    <div class="hero-bg" style="background-image: url('https://rocketspark.pictures/CF-a0fada47-234b-4885-ada3-0e2320e7f640/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/1dbc63c1807a8b58ab443661358924f7.jpg');"></div>
+    <div class="hero-content">
+      <span class="section-label">Our Village</span>
+      <h1 data-edit="gallery.heroTitle">Gallery</h1>
+      <p class="hero-tagline" data-edit="gallery.heroTagline">Picture yourself here at Highfield Country Estate</p>
+    </div>
+  </section>
+
+  <div id="hf-gallery"></div>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg" style="background-image: url('https://rocketspark.pictures/CF-a0fada37-031a-4834-889f-451ecf7b7749/fit=cover,gravity=auto,width=1600,height=900,sharpen=1.00/ab5c65bf96ad320dcb6ba3081ab6c932.jpg');"></div>
+    <div class="cta-banner-content">
+      <span class="section-label" style="color: var(--gold-light);">Come See for Yourself</span>
+      <h2 data-edit="gallery.heading1">Experience Highfield Country Estate</h2>
+      <p data-edit="gallery.para1">Book a viewing and see why our residents love living here.</p>
+      <a href="contact.html" class="btn btn-light">Book a Viewing</a>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:9999; cursor:pointer; justify-content:center; align-items:center;" onclick="closeLightbox()">
+    <button style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:white;font-size:2.5rem;cursor:pointer;z-index:10000;line-height:1;" onclick="closeLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="Gallery Photo" style="max-width:90vw;max-height:90vh;object-fit:contain;">
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <a href="index.html"><img src="images/logo.svg" alt="Highfield Country Estate" style="height: 100px; width: auto; display: block; background: transparent; margin-bottom: 1rem;"></a>
+          </div>
+          <p data-edit="gallery.para2">A retirement village of distinction in the heart of Te Awamutu, offering spacious villas, beautiful grounds, and a warm, welcoming community.</p>
+          <div class="footer-badges">
+            <div class="footer-badge">RVA Member</div>
+            <div class="footer-badge">Est. Te Awamutu</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="facilities.html">Facilities &amp; Activities</a>
+          <a href="villas.html">Our Villas</a>
+          <a href="available-villas.html">Available Villas</a>
+          <a href="testimonials.html">Testimonials</a>
+          <a href="news.html">Latest News</a>
+          <a href="te-awamutu.html">Te Awamutu</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="villas.html#floor-plans">Villa Floor Plans</a>
+          <a href="gallery.html">Photo Gallery</a>
+          <a href="contact.html#faq">FAQ</a>
+          <a href="contact.html">Book a Viewing</a>
+          <a href="staff-login.html">Staff Login</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <p><strong style="color: rgba(255,255,255,0.9);">Phone:</strong> 07 871 2020</p>
+          <p><strong style="color: rgba(255,255,255,0.9);">Address:</strong> 397 Swarbrick Drive,<br>Te Awamutu 3800</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Highfield Country Estate. All rights reserved. | Retirement Villages Association of New Zealand | <a href="staff-login.html" style="color: rgba(255,255,255,0.5);">Staff Login</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== STICKY SIDEBAR ===== -->
+  <aside class="sticky-sidebar" id="stickySidebar">
+    <button class="sidebar-close" onclick="document.getElementById('stickySidebar').style.display='none'" aria-label="Close">&times;</button>
+    <h4>Book a Viewing</h4>
+    <p>Experience Highfield for yourself</p>
+    <a href="contact.html" class="btn btn-light">Register Interest</a>
+  </aside>
+
+  <script src="js/site-data.js"></script>
+  <script src="js/cms.js"></script>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

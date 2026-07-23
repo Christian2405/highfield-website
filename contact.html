@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Highfield Country Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="Highfield Country Estate" style="height: 80px; width: auto; display: block; background: transparent;">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="villas.html">Our Villas</a></li>
+          <li><a href="available-villas.html">Available Villas</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="te-awamutu.html">Te Awamutu</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="contact.html" class="nav-cta">Book a Viewing</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="hero page-hero">
+    <div class="hero-bg" style="background-image: url('https://rocketspark.pictures/CF-a0fada0d-1b0e-4a6d-abe1-da1af438926c/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/abc29459c5da91d016139167dee8fa50.jpg');"></div>
+    <div class="hero-content">
+      <span class="section-label">We'd Love to Hear from You</span>
+      <h1 data-edit="contact.heroTitle">Contact Us</h1>
+      <p class="hero-tagline" data-edit="contact.heroTagline">Arrange a viewing, request information, or simply say hello</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section-white">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title" data-edit="contact.heading1">We're Here to Help</h2>
+          <p style="margin-bottom: 2.5rem;" data-edit="contact.para1">Whether you're exploring retirement options for yourself or a loved one, we would be delighted to welcome you to Highfield. Pop in, call, or send us a message.</p>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#9742;</div>
+            <div>
+              <h4>Phone</h4>
+              <p>07 871 2020</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#9993;</div>
+            <div>
+              <h4>Address</h4>
+              <p>397 Swarbrick Drive<br>Te Awamutu 3800<br>New Zealand</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">&#9200;</div>
+            <div>
+              <h4>Office Hours</h4>
+              <p>Monday &ndash; Friday: 9am &ndash; 4pm<br>Weekends by appointment</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background: var(--cream); border-left: 3px solid var(--gold);">
+            <h4 style="margin-bottom: 0.5rem;">Request an Information Pack</h4>
+            <p style="font-size: 0.9rem;" data-edit="contact.para2">We'd be happy to send you a comprehensive information pack about Highfield Country Estate. Simply call us or send a message through the form.</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <div id="formSuccess" style="display: none; background: #eef7ee; border: 1px solid #a8d5a8; color: #2e7d32; padding: 1.25rem 1.5rem; border-radius: 3px; margin-bottom: 1.5rem;">
+            <strong>Thank you!</strong> Your message has been sent. We'll be in touch shortly.
+          </div>
+          <form id="contactForm" action="https://formsubmit.co/manager@highfieldcountryestate.co.nz" method="POST">
+            <input type="hidden" name="_subject" value="New enquiry from the Highfield website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" id="formNext" value="">
+            <input type="text" name="_honey" style="display:none;">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="07 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="interest">I'm interested in</label>
+              <input type="text" id="interest" name="interest" placeholder="e.g. Booking a viewing, Villa availability, Information pack">
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Send Message</button>
+          </form>
+          <script>
+            // Send visitors back to this page with a thank-you message after submitting
+            document.getElementById('formNext').value = window.location.origin + window.location.pathname + '?sent=1';
+            if (window.location.search.indexOf('sent=1') !== -1) {
+              document.getElementById('formSuccess').style.display = 'block';
+              document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP PLACEHOLDER ===== -->
+  <section style="padding: 0; background: var(--cream-dark); height: 350px; display: flex; align-items: center; justify-content: center;">
+    <div style="text-align: center;">
+      <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light);" data-edit="contact.para3">&#9906; 397 Swarbrick Drive, Te Awamutu 3800</p>
+      <p style="margin-top: 0.5rem; font-style: italic; color: var(--text-light); font-size: 0.85rem;">(Google Maps embed can be placed here)</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section-white" id="faq">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title centered" data-edit="contact.heading2">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">What is an Occupation Right Agreement?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para4">The Occupation Right Agreement is the most common form of occupation and ownership in retirement villages in New Zealand. It gives you the right to occupy your chosen villa for your lifetime, and the right to enjoy the land, buildings and facilities intended for common use in the village.</p>
+              <p data-edit="contact.para5">All villages are governed by the Retirement Villages Act 2003. Under this Act, you are required to get independent legal advice before signing an occupation right agreement.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What is the cooling off period?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para6">Under the Retirement Villages Act there is a 15 working day cooling off period after you have signed the Occupation Right Agreement with your Lawyer. During this period you can cancel your agreement without any deductions, and receive your full deposit back with interest.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What will it cost me to be a resident?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para7">Costs include the purchase price of your villa, the Village Outgoings fee (a weekly payment of $195 covering the running of the village), and the Village Contribution. You are also responsible for internal maintenance of your villa and personal expenses such as food, power, phone bills, and contents insurance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What is the &ldquo;Village Contribution&rdquo;?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para8">The Village Contribution covers the cost of providing village facilities, on-going development, and maintenance costs not covered by the Village Outgoings fee. At Highfield Country Estate, it accrues at a rate of 10% per year up to a maximum of 3 years (equating to 30% of your initial purchase price). It is not charged until termination of the Occupation Right Agreement and your villa is re-sold.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Will I qualify to become a resident?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para9">Highfield Country Estate management requires that you must be over 65 years of age, and at the time you purchase an Occupation Right Agreement you must be in good health.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I have friends and family to stay?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para10">Yes! Your villa at Highfield Country Estate is your home, and family and friends are encouraged to visit as often as they wish. You can entertain them in your villa or in the community centre, where your guests are welcome to use the facilities as long as you are present with them.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I bring my pet?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para11">We understand pets play an important part in people's lives. While most small domestic pets are welcome, you will need to obtain management consent before you move in.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What security is provided?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para12">Emergency call buttons are installed in your villa, with trained persons automatically notified 24 hours a day. Security gates on the front entrance require an access code after hours, and security patrols the village at intervals during the night.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What if I want to go on holiday?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para13">This is your home, so you have the freedom to come and go as you please. Whether you choose to go overseas for a few months or just a short holiday, we will maintain the grounds and security so you have total peace of mind while you are away.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I have my own garden?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para14">Yes, you are welcome to maintain the garden adjoining your own home or an area allocated by the Village Manager. However, if preferred, all gardening and lawn mowing will be carried out by village staff as part of the weekly fee.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How involved in the village do I need to be?</button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p data-edit="contact.para15">It is entirely your choice. Some residents choose to be totally involved while others prefer to live quietly. Your villa has been designed for easy care and personal privacy so that you're able to decide just how involved you become.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <a href="index.html"><img src="images/logo.svg" alt="Highfield Country Estate" style="height: 100px; width: auto; display: block; background: transparent; margin-bottom: 1rem;"></a>
+          </div>
+          <p data-edit="contact.para16">A retirement village of distinction in the heart of Te Awamutu, offering spacious villas, beautiful grounds, and a warm, welcoming community.</p>
+          <div class="footer-badges">
+            <div class="footer-badge">RVA Member</div>
+            <div class="footer-badge">Est. Te Awamutu</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="facilities.html">Facilities &amp; Activities</a>
+          <a href="villas.html">Our Villas</a>
+          <a href="available-villas.html">Available Villas</a>
+          <a href="testimonials.html">Testimonials</a>
+          <a href="news.html">Latest News</a>
+          <a href="te-awamutu.html">Te Awamutu</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="villas.html#floor-plans">Villa Floor Plans</a>
+          <a href="gallery.html">Photo Gallery</a>
+          <a href="contact.html#faq">FAQ</a>
+          <a href="contact.html">Book a Viewing</a>
+          <a href="contact.html">Information Pack</a>
+          <a href="staff-login.html">Staff Login</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <p><strong style="color: rgba(255,255,255,0.9);">Phone:</strong> 07 871 2020</p>
+          <p><strong style="color: rgba(255,255,255,0.9);">Address:</strong> 397 Swarbrick Drive,<br>Te Awamutu 3800</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Highfield Country Estate. All rights reserved. | Retirement Villages Association of New Zealand | <a href="staff-login.html" style="color: rgba(255,255,255,0.5);">Staff Login</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('open');
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

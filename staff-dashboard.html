@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard — Highfield Country Estate</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://d3e5t04pmhhh45.cloudfront.net/logos/968/dark.v20250306110235.png">
+  <style>
+    :root {
+      --navy: #1B2A4A; --navy-dark: #132038; --navy-mid: #2C4070;
+      --gold: #B8965A; --gold-light: #D4B87C;
+      --ink: #23262b; --muted: #6b7280; --line: #e5e7eb;
+      --bg: #f7f8fa; --card: #ffffff;
+      --serif: 'Cormorant Garamond', serif; --sans: 'Lato', sans-serif;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(16,24,40,0.07), 0 1px 2px rgba(16,24,40,0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); padding-bottom: 92px; }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      background: white; border-bottom: 1px solid var(--line);
+      padding: 0.65rem 1.5rem; display: flex; align-items: center; gap: 1.25rem;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .topbar img.logo { height: 52px; width: auto; display: block; }
+    .topbar .title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); font-weight: 700; }
+    .topbar .spacer { flex: 1; }
+    .topbar a.link-btn, .topbar button.link-btn {
+      background: none; border: 1px solid var(--line); color: var(--navy);
+      padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; font-family: var(--sans); transition: all 0.15s;
+    }
+    .topbar a.link-btn:hover, .topbar button.link-btn:hover { border-color: var(--navy); background: #f4f6fa; }
+
+    /* ---------- Tabs ---------- */
+    .tabs {
+      display: flex; gap: 0.4rem; padding: 1rem 1.5rem 0; max-width: 860px; margin: 0 auto;
+      overflow-x: auto; width: 100%;
+    }
+    .tab {
+      padding: 0.55rem 1.1rem; border-radius: 999px; cursor: pointer;
+      font-size: 0.85rem; font-weight: 700; color: var(--muted);
+      border: 1px solid transparent; white-space: nowrap; transition: all 0.15s;
+    }
+    .tab:hover { color: var(--navy); background: #eef1f6; }
+    .tab.active { background: var(--navy); color: white; }
+
+    /* ---------- Layout ---------- */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 1.25rem 1.5rem 3rem; }
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+    .panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 0.5rem 0 0.35rem; gap: 1rem; flex-wrap: wrap;
+    }
+    .panel-head h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; color: var(--navy); }
+    .panel-sub { font-size: 0.86rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.55; }
+
+    .btn {
+      border: none; border-radius: 8px; cursor: pointer; font-family: var(--sans);
+      font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1.15rem; transition: all 0.15s;
+    }
+    .btn-primary { background: var(--navy); color: white; }
+    .btn-primary:hover { background: var(--navy-mid); }
+    .btn-gold { background: var(--gold); color: white; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--line); }
+    .btn-ghost:hover { color: #b42318; border-color: #e5b5b1; background: #fdf3f2; }
+    .btn-sm { padding: 0.35rem 0.75rem; font-size: 0.78rem; border-radius: 6px; }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 1.4rem 1.5rem; margin-bottom: 1rem;
+    }
+    .card.flash { animation: flash 1.6s ease; }
+    @keyframes flash { 0% { box-shadow: 0 0 0 3px var(--gold-light); } 100% { box-shadow: var(--shadow); } }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; }
+    .card-top .tag {
+      font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--gold); background: #faf6ee; padding: 0.3rem 0.65rem; border-radius: 999px;
+    }
+    .card-top .card-actions { display: flex; gap: 0.4rem; align-items: center; }
+
+    label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin: 0.9rem 0 0.3rem; }
+    input[type="text"], textarea {
+      width: 100%; padding: 0.65rem 0.85rem; font-size: 0.95rem; color: var(--ink);
+      border: 1px solid var(--line); border-radius: 8px; font-family: var(--sans);
+      background: #fcfcfd; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    input[type="text"]:focus, textarea:focus {
+      outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,42,74,0.08); background: white;
+    }
+    textarea { min-height: 88px; resize: vertical; line-height: 1.5; }
+
+    .thumb { border-radius: 6px; border: 1px solid var(--line); object-fit: cover; background: #f0f1f3; }
+    .img-preview { max-height: 110px; max-width: 100%; margin-top: 0.6rem; border-radius: 6px; border: 1px solid var(--line); display: block; }
+
+    .photo-card { display: flex; gap: 1.1rem; align-items: flex-start; }
+    .photo-card .thumb { width: 120px; height: 86px; flex-shrink: 0; margin-top: 1.55rem; }
+    .photo-card .fields { flex: 1; min-width: 0; }
+    .photo-card .fields label:first-child { margin-top: 0; }
+
+    .section-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 1.75rem 0 0.75rem; gap: 1rem;
+    }
+    .section-head:first-of-type { margin-top: 0.5rem; }
+    .section-head h3 { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; color: var(--navy); }
+
+    .empty-note { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 1.5rem; background: #fbfbfc; border: 1px dashed var(--line); border-radius: var(--radius); margin-bottom: 1rem; }
+
+    /* ---------- Publish helper ---------- */
+    .steps { counter-reset: step; margin: 1rem 0; }
+    .step { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+    .step:last-child { border-bottom: none; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: white;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; flex-shrink: 0;
+    }
+    .step p { font-size: 0.92rem; line-height: 1.55; color: var(--ink); }
+
+    /* ---------- Save bar ---------- */
+    .savebar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(6px);
+      border-top: 1px solid var(--line); padding: 0.9rem 1.5rem;
+      display: flex; gap: 0.75rem; justify-content: center; align-items: center; flex-wrap: wrap;
+    }
+    .savebar .btn { padding: 0.7rem 1.5rem; }
+    .toast {
+      position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%) translateY(8px);
+      background: var(--navy-dark); color: white; padding: 0.7rem 1.3rem; border-radius: 8px;
+      font-size: 0.87rem; opacity: 0; pointer-events: none; transition: all 0.25s; z-index: 70;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25); max-width: 90%; text-align: center;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 640px) {
+      .photo-card { flex-direction: column; }
+      .photo-card .thumb { width: 100%; height: 140px; margin-top: 0; }
+      .topbar .title { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <img class="logo" src="images/logo-official.png" alt="Highfield Country Estate">
+    <span class="title">Staff Dashboard</span>
+    <span class="spacer"></span>
+    <a class="link-btn" href="index.html" target="_blank">View Website</a>
+    <button class="link-btn" onclick="logout()">Log Out</button>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab active" data-tab="awards" onclick="showTab('awards')">Awards</div>
+    <div class="tab" data-tab="testimonials" onclick="showTab('testimonials')">Testimonials</div>
+    <div class="tab" data-tab="team" onclick="showTab('team')">Team</div>
+    <div class="tab" data-tab="news" onclick="showTab('news')">News</div>
+    <div class="tab" data-tab="gallery" onclick="showTab('gallery')">Photos</div>
+    <div class="tab" data-tab="trips" onclick="showTab('trips')">Trips &amp; Events</div>
+    <div class="tab" data-tab="villas" onclick="showTab('villas')">Available Villas</div>
+    <div class="tab" data-tab="pagetext" onclick="showTab('pagetext')">Page Text</div>
+    <div class="tab" data-tab="publish" onclick="showTab('publish')">Publishing</div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- AWARDS -->
+    <section class="panel active" id="panel-awards">
+      <div class="panel-head">
+        <h2>Awards</h2>
+        <button class="btn btn-primary" onclick="addAward()">+ Add Award</button>
+      </div>
+      <p class="panel-sub">Shown in the &ldquo;Award-Winning Village&rdquo; section on the home page. Add a certificate image address to display the certificate; leave it blank for a text card. New awards appear at the top, ready to fill in.</p>
+      <div id="awardsList"></div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="panel" id="panel-testimonials">
+      <div class="panel-head">
+        <h2>Testimonials</h2>
+        <button class="btn btn-primary" onclick="addTestimonial()">+ Add Testimonial</button>
+      </div>
+      <p class="panel-sub">Quotes shown on the Testimonials page, in the order below.</p>
+      <div id="testimonialsList"></div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="panel" id="panel-team">
+      <div class="panel-head">
+        <h2>Team</h2>
+        <button class="btn btn-primary" onclick="addTeam()">+ Add Team Member</button>
+      </div>
+      <p class="panel-sub">The &ldquo;Meet Our Team&rdquo; section on the Testimonials page. Drag order with the arrows; visitors click a member to reveal their bio.</p>
+      <div id="teamList"></div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="panel" id="panel-news">
+      <div class="panel-head">
+        <h2>News</h2>
+        <button class="btn btn-primary" onclick="addNews()">+ Add Article</button>
+      </div>
+      <p class="panel-sub">Articles on the News page. Newest first &mdash; new articles are added to the top. Use the arrows to reorder.</p>
+      <div id="newsList"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="panel" id="panel-gallery">
+      <div class="panel-head">
+        <h2>Photos</h2>
+      </div>
+      <p class="panel-sub">Photos on the Gallery page, organised into sections. Use each section&rsquo;s &ldquo;Add Photo&rdquo; button &mdash; the new photo appears at the top of that section.</p>
+      <div id="galleryList"></div>
+    </section>
+
+    <!-- TRIPS & EVENTS -->
+    <section class="panel" id="panel-trips">
+      <div class="panel-head">
+        <h2>Trips &amp; Events</h2>
+        <button class="btn btn-primary" onclick="addTrip()">+ Add Trip / Event</button>
+      </div>
+      <p class="panel-sub">Shown in the &ldquo;Weekly Van Trips &amp; Outings&rdquo; section on the Facilities page. The day appears as a badge on each card.</p>
+      <div id="tripsList"></div>
+    </section>
+
+    <!-- AVAILABLE VILLAS -->
+    <section class="panel" id="panel-villas">
+      <div class="panel-head">
+        <h2>Available Villas</h2>
+        <button class="btn btn-primary" onclick="addVilla()">+ Add Villa</button>
+      </div>
+      <p class="panel-sub">Villas listed for sale on the Our Villas page. When this list is empty, the &ldquo;Available Villas&rdquo; section is hidden from the website automatically.</p>
+      <div id="villasList"></div>
+    </section>
+
+    <!-- PAGE TEXT -->
+    <section class="panel" id="panel-pagetext">
+      <div class="panel-head"><h2>Page Text</h2></div>
+      <p class="panel-sub">Edit the headings and taglines across the website. Changes appear live once you Save &amp; Publish.</p>
+      <div id="pageTextList"></div>
+    </section>
+
+    <!-- PUBLISHING -->
+    <section class="panel" id="panel-publish">
+      <div class="panel-head"><h2>Publishing</h2></div>
+      <div class="card">
+        <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.4rem;"><strong>Save Changes</strong> shows your edits instantly on this computer so you can preview them on the website before anyone else sees them.</p>
+        <p style="font-size: 0.95rem; line-height: 1.6;">To make changes live for everyone:</p>
+        <div class="steps">
+          <div class="step"><p>Press <strong>Publish</strong> below &mdash; a file called <strong>site-data.js</strong> downloads.</p></div>
+          <div class="step"><p>In the website folder, open the <strong>js</strong> folder and replace the old <strong>site-data.js</strong> with the downloaded one.</p></div>
+          <div class="step"><p>Drag the website folder into Netlify, the same way the site was first put up. Changes go live within a minute.</p></div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.55;">Why the download step? The website is &ldquo;static&rdquo; hosting &mdash; there is no server behind it that the dashboard could save to. This keeps hosting free and very secure, with one small manual step to publish.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="savebar">
+    <button class="btn btn-primary" onclick="saveDraft()">Save Changes</button>
+    <button class="btn btn-gold" onclick="publish()">Publish</button>
+    <button class="btn btn-ghost" onclick="discard()">Discard Changes</button>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/site-data.js"></script>
+  <script>
+    // ---- Auth gate ----
+    if (sessionStorage.getItem('hf-staff-auth') !== '1') {
+      window.location.href = 'staff-login.html';
+    }
+    function logout() {
+      sessionStorage.removeItem('hf-staff-auth');
+      window.location.href = 'index.html';
+    }
+
+    // ---- Data ----
+    var DATA = JSON.parse(JSON.stringify(window.SITE_DATA));
+    try {
+      var draft = localStorage.getItem('highfield-cms-draft');
+      if (draft) DATA = JSON.parse(draft);
+    } catch (e) {}
+    // Older saved drafts may not have the newer sections — fill them in
+    if (!DATA.trips) DATA.trips = JSON.parse(JSON.stringify(window.SITE_DATA.trips || []));
+    if (!DATA.villas) DATA.villas = JSON.parse(JSON.stringify(window.SITE_DATA.villas || []));
+    if (!DATA.team) DATA.team = JSON.parse(JSON.stringify(window.SITE_DATA.team || []));
+    if (!DATA.pageText) DATA.pageText = JSON.parse(JSON.stringify(window.SITE_DATA.pageText || {}));
+    var PT_LABELS = window.SITE_DATA.pageTextLabels || {};
+    var PT_ORDER = window.SITE_DATA.pageTextOrder || [];
+    var PT_PAGES = window.SITE_DATA.pageTextPages || {};
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ---- Image picker: choose a file, auto-resize, store in site data ----
+    function pickImage(cb) {
+      var inp = document.createElement('input');
+      inp.type = 'file';
+      inp.accept = 'image/*';
+      inp.onchange = function () {
+        var f = inp.files[0];
+        if (!f) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          var img = new Image();
+          img.onload = function () {
+            var MAX = 1400;
+            var scale = Math.min(1, MAX / Math.max(img.width, img.height));
+            var c = document.createElement('canvas');
+            c.width = Math.round(img.width * scale);
+            c.height = Math.round(img.height * scale);
+            c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+            cb(c.toDataURL('image/jpeg', 0.82));
+          };
+          img.src = reader.result;
+        };
+        reader.readAsDataURL(f);
+      };
+      inp.click();
+    }
+
+    // Reusable photo control (preview + Add/Replace/Remove buttons)
+    function photoControl(current, setFn, clearFn, label) {
+      return '<label>' + (label || 'Photo') + '</label>' +
+        '<div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:0.25rem;">' +
+        (current ? '<img class="img-preview" style="margin-top:0;max-height:90px;" src="' + esc(current) + '" alt="Preview">' : '') +
+        '<button class="btn btn-primary btn-sm" onclick="' + setFn + '">' + (current ? 'Replace Photo' : '+ Add Photo') + '</button>' +
+        (current ? '<button class="btn btn-ghost btn-sm" onclick="' + clearFn + '">Remove Photo</button>' : '') +
+        '</div>';
+    }
+
+    function setAwardImage(i) { pickImage(function (d) { DATA.awards[i].image = d; renderAwards(); }); }
+    function clearAwardImage(i) { DATA.awards[i].image = ''; renderAwards(); }
+    function setNewsImage(i) { pickImage(function (d) { DATA.news[i].image = d; renderNews(); }); }
+    function clearNewsImage(i) { DATA.news[i].image = ''; renderNews(); }
+    function setVillaImage(i) { pickImage(function (d) { DATA.villas[i].image = d; renderVillas(); }); }
+    function clearVillaImage(i) { DATA.villas[i].image = ''; renderVillas(); }
+    function setTeamImage(i) { pickImage(function (d) { DATA.team[i].image = d; renderTeam(); }); }
+    function clearTeamImage(i) { DATA.team[i].image = ''; renderTeam(); }
+    function setGalleryImage(si, pi) { pickImage(function (d) { DATA.gallery[si].photos[pi].src = d; renderGallery(); }); }
+
+    // ---- Tabs ----
+    function showTab(name) {
+      document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('active', t.dataset.tab === name); });
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+      document.getElementById('panel-' + name).classList.add('active');
+      window.scrollTo({ top: 0 });
+    }
+
+    // After adding an item: highlight it and put the cursor in its first field
+    function focusNewCard(listId) {
+      var card = document.querySelector('#' + listId + ' .card');
+      if (!card) return;
+      card.classList.add('flash');
+      var input = card.querySelector('input[type="text"], textarea');
+      if (input) input.focus();
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ---- AWARDS ----
+    function renderAwards() {
+      var el = document.getElementById('awardsList');
+      if (!DATA.awards.length) { el.innerHTML = '<div class="empty-note">No awards yet — press “+ Add Award”.</div>'; return; }
+      el.innerHTML = DATA.awards.map(function (a, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">Award</span>' +
+          '<div class="card-actions"><button class="btn btn-ghost btn-sm" onclick="removeAward(' + i + ')">Remove</button></div></div>' +
+          '<label>Big text (e.g. 2020)</label>' +
+          '<input type="text" value="' + esc(a.year) + '" oninput="DATA.awards[' + i + '].year = this.value">' +
+          '<label>Title (e.g. Winner / Finalist)</label>' +
+          '<input type="text" value="' + esc(a.title) + '" oninput="DATA.awards[' + i + '].title = this.value">' +
+          '<label>Caption shown under the certificate (optional)</label>' +
+          '<input type="text" value="' + esc(a.detail) + '" oninput="DATA.awards[' + i + '].detail = this.value">' +
+          photoControl(a.image, 'setAwardImage(' + i + ')', 'clearAwardImage(' + i + ')', 'Certificate image (optional — shows the certificate instead of text)') +
+          '</div>';
+      }).join('');
+    }
+    function addAward() { DATA.awards.unshift({ year: '', title: '', detail: '', image: '' }); renderAwards(); focusNewCard('awardsList'); }
+    function removeAward(i) { if (confirm('Remove this award?')) { DATA.awards.splice(i, 1); renderAwards(); } }
+
+    // ---- TESTIMONIALS ----
+    function renderTestimonials() {
+      var el = document.getElementById('testimonialsList');
+      if (!DATA.testimonials.length) { el.innerHTML = '<div class="empty-note">No testimonials yet — press “+ Add Testimonial”.</div>'; return; }
+      el.innerHTML = DATA.testimonials.map(function (t, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">Testimonial</span>' +
+          '<div class="card-actions"><button class="btn btn-ghost btn-sm" onclick="removeTestimonial(' + i + ')">Remove</button></div></div>' +
+          '<label>Quote</label>' +
+          '<textarea oninput="DATA.testimonials[' + i + '].quote = this.value">' + esc(t.quote) + '</textarea>' +
+          '<label>Name(s)</label>' +
+          '<input type="text" value="' + esc(t.author) + '" oninput="DATA.testimonials[' + i + '].author = this.value">' +
+          '</div>';
+      }).join('');
+    }
+    function addTestimonial() { DATA.testimonials.unshift({ quote: '', author: '' }); renderTestimonials(); focusNewCard('testimonialsList'); }
+    function removeTestimonial(i) { if (confirm('Remove this testimonial?')) { DATA.testimonials.splice(i, 1); renderTestimonials(); } }
+
+    // ---- PAGE TEXT ----
+    function renderPageText() {
+      var el = document.getElementById('pageTextList');
+      // group keys by page
+      var groups = {};
+      PT_ORDER.forEach(function (key) {
+        var page = key.split('.')[0];
+        (groups[page] = groups[page] || []).push(key);
+      });
+      var html = '';
+      Object.keys(groups).forEach(function (page) {
+        html += '<div class="section-head"><h3>' + esc(PT_PAGES[page] || page) + '</h3></div>';
+        groups[page].forEach(function (key) {
+          var label = (PT_LABELS[key] || key).replace(/^[^—]*—\s*/, '');
+          var val = DATA.pageText[key] || '';
+          var big = val.length > 70;
+          var field = big
+            ? '<textarea oninput="DATA.pageText[\'' + key + '\'] = this.value">' + esc(val) + '</textarea>'
+            : '<input type="text" value="' + esc(val) + '" oninput="DATA.pageText[\'' + key + '\'] = this.value">';
+          html += '<div class="card"><label>' + esc(label) + '</label>' + field + '</div>';
+        });
+      });
+      el.innerHTML = html || '<div class="empty-note">No editable text found.</div>';
+    }
+
+    // ---- TEAM ----
+    function renderTeam() {
+      var el = document.getElementById('teamList');
+      if (!DATA.team.length) { el.innerHTML = '<div class="empty-note">No team members yet — press “+ Add Team Member”.</div>'; return; }
+      el.innerHTML = DATA.team.map(function (m, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">' + (esc(m.name) || 'Team Member') + '</span>' +
+          '<div class="card-actions">' +
+          (i > 0 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move up" onclick="moveTeam(' + i + ',-1)">&uarr;</button>' : '') +
+          (i < DATA.team.length - 1 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move down" onclick="moveTeam(' + i + ',1)">&darr;</button>' : '') +
+          '<button class="btn btn-ghost btn-sm" onclick="removeTeam(' + i + ')">Remove</button></div></div>' +
+          photoControl(m.image, 'setTeamImage(' + i + ')', 'clearTeamImage(' + i + ')') +
+          '<label>Name</label>' +
+          '<input type="text" value="' + esc(m.name) + '" oninput="DATA.team[' + i + '].name = this.value">' +
+          '<label>Role / job title</label>' +
+          '<input type="text" value="' + esc(m.role) + '" oninput="DATA.team[' + i + '].role = this.value">' +
+          '<label>Bio</label>' +
+          '<textarea oninput="DATA.team[' + i + '].bio = this.value">' + esc(m.bio) + '</textarea>' +
+          '<label>Fun fact (optional)</label>' +
+          '<textarea oninput="DATA.team[' + i + '].funfact = this.value">' + esc(m.funfact) + '</textarea>' +
+          '</div>';
+      }).join('');
+    }
+    function addTeam() { DATA.team.unshift({ name: '', role: '', image: '', bio: '', funfact: '' }); renderTeam(); focusNewCard('teamList'); }
+    function removeTeam(i) { if (confirm('Remove this team member?')) { DATA.team.splice(i, 1); renderTeam(); } }
+    function moveTeam(i, dir) { var m = DATA.team.splice(i, 1)[0]; DATA.team.splice(i + dir, 0, m); renderTeam(); }
+
+    // ---- NEWS ----
+    function renderNews() {
+      var el = document.getElementById('newsList');
+      if (!DATA.news.length) { el.innerHTML = '<div class="empty-note">No articles yet — press “+ Add Article”.</div>'; return; }
+      el.innerHTML = DATA.news.map(function (n, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">' + (esc(n.category) || 'Article') + '</span>' +
+          '<div class="card-actions">' +
+          (i > 0 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move up" onclick="moveNews(' + i + ',-1)">&uarr;</button>' : '') +
+          (i < DATA.news.length - 1 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move down" onclick="moveNews(' + i + ',1)">&darr;</button>' : '') +
+          '<button class="btn btn-ghost btn-sm" onclick="removeNews(' + i + ')">Remove</button></div></div>' +
+          '<label>Headline</label>' +
+          '<input type="text" value="' + esc(n.title) + '" oninput="DATA.news[' + i + '].title = this.value">' +
+          '<label>Category (e.g. Awards, Events, Community)</label>' +
+          '<input type="text" value="' + esc(n.category) + '" oninput="DATA.news[' + i + '].category = this.value">' +
+          '<label>Date shown (e.g. January 2026)</label>' +
+          '<input type="text" value="' + esc(n.date) + '" oninput="DATA.news[' + i + '].date = this.value">' +
+          photoControl(n.image, 'setNewsImage(' + i + ')', 'clearNewsImage(' + i + ')') +
+          '<label>First paragraph</label>' +
+          '<textarea oninput="DATA.news[' + i + '].paragraphs[0] = this.value">' + esc((n.paragraphs || [])[0] || '') + '</textarea>' +
+          '<label>Second paragraph</label>' +
+          '<textarea oninput="DATA.news[' + i + '].paragraphs[1] = this.value">' + esc((n.paragraphs || [])[1] || '') + '</textarea>' +
+          '</div>';
+      }).join('');
+    }
+    function addNews() { DATA.news.unshift({ category: '', title: '', date: '', image: '', paragraphs: ['', ''] }); renderNews(); focusNewCard('newsList'); }
+    function removeNews(i) { if (confirm('Remove this article?')) { DATA.news.splice(i, 1); renderNews(); } }
+    function moveNews(i, dir) {
+      var item = DATA.news.splice(i, 1)[0];
+      DATA.news.splice(i + dir, 0, item);
+      renderNews();
+    }
+
+    // ---- GALLERY ----
+    function renderGallery() {
+      var el = document.getElementById('galleryList');
+      el.innerHTML = DATA.gallery.map(function (sec, si) {
+        var photos = sec.photos.map(function (p, pi) {
+          return '<div class="card photo-card">' +
+            '<img class="thumb" src="' + esc(p.src) + '" alt="" onerror="this.style.opacity=0.25">' +
+            '<div class="fields">' +
+            '<div style="margin-bottom:0.25rem;"><button class="btn btn-primary btn-sm" onclick="setGalleryImage(' + si + ',' + pi + ')">' + (p.src ? 'Replace Photo' : '+ Add Photo') + '</button></div>' +
+            '<label>Caption</label>' +
+            '<input type="text" value="' + esc(p.alt) + '" oninput="DATA.gallery[' + si + '].photos[' + pi + '].alt = this.value">' +
+            '</div>' +
+            '<button class="btn btn-ghost btn-sm" style="margin-top:1.55rem;" onclick="removePhoto(' + si + ',' + pi + ')">Remove</button>' +
+            '</div>';
+        }).join('') || '<div class="empty-note">No photos in this section yet.</div>';
+        return '<div class="section-head"><h3>' + esc(sec.title) + '</h3>' +
+          '<button class="btn btn-primary btn-sm" onclick="addPhoto(' + si + ')">+ Add Photo</button></div>' +
+          '<div id="gallerySec' + si + '">' + photos + '</div>';
+      }).join('');
+    }
+    function addPhoto(si) {
+      pickImage(function (d) {
+        DATA.gallery[si].photos.unshift({ src: d, alt: '' });
+        renderGallery();
+        var card = document.querySelector('#gallerySec' + si + ' .card');
+        if (card) card.classList.add('flash');
+      });
+      return;
+      // (old flow below unused)
+      DATA.gallery[si].photos.unshift({ src: '', alt: '' });
+      renderGallery();
+      var card = document.querySelector('#gallerySec' + si + ' .card');
+      if (card) {
+        card.classList.add('flash');
+        var input = card.querySelector('input');
+        if (input) input.focus();
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+    function removePhoto(si, pi) { if (confirm('Remove this photo?')) { DATA.gallery[si].photos.splice(pi, 1); renderGallery(); } }
+
+    // ---- TRIPS & EVENTS ----
+    function renderTrips() {
+      var el = document.getElementById('tripsList');
+      if (!DATA.trips.length) { el.innerHTML = '<div class="empty-note">No trips or events yet — press “+ Add Trip / Event”.</div>'; return; }
+      el.innerHTML = DATA.trips.map(function (t, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">' + (esc(t.day) || 'Trip') + '</span>' +
+          '<div class="card-actions">' +
+          (i > 0 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move up" onclick="moveTrip(' + i + ',-1)">&uarr;</button>' : '') +
+          (i < DATA.trips.length - 1 ? '<button class="btn btn-ghost btn-sm" style="color:var(--navy);" title="Move down" onclick="moveTrip(' + i + ',1)">&darr;</button>' : '') +
+          '<button class="btn btn-ghost btn-sm" onclick="removeTrip(' + i + ')">Remove</button></div></div>' +
+          '<label>Day or date (e.g. Tuesday, or 14 March)</label>' +
+          '<input type="text" value="' + esc(t.day) + '" oninput="DATA.trips[' + i + '].day = this.value">' +
+          '<label>Name (e.g. Caf&eacute; Trip)</label>' +
+          '<input type="text" value="' + esc(t.title) + '" oninput="DATA.trips[' + i + '].title = this.value">' +
+          '<label>Description</label>' +
+          '<textarea oninput="DATA.trips[' + i + '].description = this.value">' + esc(t.description) + '</textarea>' +
+          '</div>';
+      }).join('');
+    }
+    function addTrip() { DATA.trips.unshift({ day: '', title: '', description: '' }); renderTrips(); focusNewCard('tripsList'); }
+    function removeTrip(i) { if (confirm('Remove this trip/event?')) { DATA.trips.splice(i, 1); renderTrips(); } }
+    function moveTrip(i, dir) {
+      var item = DATA.trips.splice(i, 1)[0];
+      DATA.trips.splice(i + dir, 0, item);
+      renderTrips();
+    }
+
+    // ---- AVAILABLE VILLAS ----
+    function renderVillas() {
+      var el = document.getElementById('villasList');
+      if (!DATA.villas.length) { el.innerHTML = '<div class="empty-note">No villas listed — the “Available Villas” section is hidden on the website.<br>Press “+ Add Villa” when one becomes available.</div>'; return; }
+      el.innerHTML = DATA.villas.map(function (v, i) {
+        return '<div class="card">' +
+          '<div class="card-top"><span class="tag">Villa</span>' +
+          '<div class="card-actions"><button class="btn btn-ghost btn-sm" onclick="removeVilla(' + i + ')">Remove</button></div></div>' +
+          '<label>Name (e.g. Villa 42, 397 Swarbrick Drive)</label>' +
+          '<input type="text" value="' + esc(v.name) + '" oninput="DATA.villas[' + i + '].name = this.value">' +
+          '<label>Villa number on the village map (e.g. 42 &mdash; turns that villa gold on the map)</label>' +
+          '<input type="text" value="' + esc(v.number || '') + '" oninput="DATA.villas[' + i + '].number = this.value">' +
+          '<label>Highlight tag (optional, e.g. Premium New Listing)</label>' +
+          '<input type="text" value="' + esc(v.tag || '') + '" oninput="DATA.villas[' + i + '].tag = this.value">' +
+          '<label>Bedrooms (e.g. 2, or &ldquo;2 bedrooms + study&rdquo;)</label>' +
+          '<input type="text" value="' + esc(v.beds || '') + '" oninput="DATA.villas[' + i + '].beds = this.value">' +
+          '<label>Bathrooms (e.g. 1, or &ldquo;1 bathroom + guest toilet&rdquo;)</label>' +
+          '<input type="text" value="' + esc(v.baths || '') + '" oninput="DATA.villas[' + i + '].baths = this.value">' +
+          '<label>Garage (e.g. 2, or &ldquo;1 internal access garage&rdquo;)</label>' +
+          '<input type="text" value="' + esc(v.garage || '') + '" oninput="DATA.villas[' + i + '].garage = this.value">' +
+          '<label>Floor area (e.g. 131 &mdash; shown as m&sup2; and sq ft automatically)</label>' +
+          '<input type="text" value="' + esc(v.area || '') + '" oninput="DATA.villas[' + i + '].area = this.value">' +
+          '<label>Price (e.g. $795,000)</label>' +
+          '<input type="text" value="' + esc(v.price) + '" oninput="DATA.villas[' + i + '].price = this.value">' +
+          '<label>Status label (e.g. Available Now, Under Offer)</label>' +
+          '<input type="text" value="' + esc(v.status) + '" oninput="DATA.villas[' + i + '].status = this.value">' +
+          photoControl(v.image, 'setVillaImage(' + i + ')', 'clearVillaImage(' + i + ')') +
+          '<label>Description</label>' +
+          '<textarea oninput="DATA.villas[' + i + '].description = this.value">' + esc(v.description) + '</textarea>' +
+          '</div>';
+      }).join('');
+    }
+    function addVilla() { DATA.villas.unshift({ name: '', number: '', tag: '', beds: '', baths: '', garage: '', area: '', details: '', price: '', status: 'Available Now', image: '', description: '' }); renderVillas(); focusNewCard('villasList'); }
+    function removeVilla(i) { if (confirm('Remove this villa?')) { DATA.villas.splice(i, 1); renderVillas(); } }
+
+    // ---- Save / publish / discard ----
+    function toast(msg) {
+      var el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(function () { el.classList.remove('show'); }, 3200);
+    }
+    function saveDraft() {
+      try {
+        localStorage.setItem('highfield-cms-draft', JSON.stringify(DATA));
+        toast('Saved — open the website in a new tab to preview. Press Publish to make it live for everyone.');
+      } catch (e) {
+        toast('Too many large photos to save a preview in this browser — press Publish instead, your changes are safe in the downloaded file.');
+      }
+    }
+    function publish() {
+      saveDraft();
+      var content = '// ============================================================\n' +
+        '// HIGHFIELD COUNTRY ESTATE — SITE CONTENT\n' +
+        '// Generated by the Staff Dashboard on ' + new Date().toLocaleString() + '\n' +
+        '// Replace js/site-data.js in the website folder with this file,\n' +
+        '// then re-upload the folder to Netlify to make changes live.\n' +
+        '// ============================================================\n' +
+        'window.SITE_DATA = ' + JSON.stringify(DATA, null, 2) + ';\n';
+      var blob = new Blob([content], { type: 'text/javascript' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'site-data.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showTab('publish');
+      toast('site-data.js downloaded — follow the steps to make it live.');
+    }
+    function discard() {
+      if (confirm('Throw away your unpublished changes and go back to the live content?')) {
+        localStorage.removeItem('highfield-cms-draft');
+        DATA = JSON.parse(JSON.stringify(window.SITE_DATA));
+        renderAll();
+        toast('Changes discarded.');
+      }
+    }
+
+    function renderAll() {
+      renderAwards();
+      renderTestimonials();
+      renderTeam();
+      renderNews();
+      renderGallery();
+      renderTrips();
+      renderVillas();
+      renderPageText();
+    }
+    renderAll();
+  </script>
+</body>
+</html>
