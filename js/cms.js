@@ -9,24 +9,9 @@
   'use strict';
 
   function getData() {
-    var data = window.SITE_DATA || {};
-    try {
-      var draft = localStorage.getItem('highfield-cms-draft');
-      if (draft) {
-        // Draft overrides defaults, but anything missing from the draft
-        // (e.g. fixed map marker positions) falls back to the published data.
-        data = Object.assign({}, data, JSON.parse(draft));
-        if (!data.team) data.team = (window.SITE_DATA || {}).team;
-        var SD = window.SITE_DATA || {};
-        data.pageTextLabels = SD.pageTextLabels;
-        data.pageTextOrder = SD.pageTextOrder;
-        data.pageTextPages = SD.pageTextPages;
-        data.villaMapMarkers = (window.SITE_DATA || {}).villaMapMarkers;
-        data.villaMapIndex = (window.SITE_DATA || {}).villaMapIndex;
-        data.villaMapBoxes = (window.SITE_DATA || {}).villaMapBoxes;
-      }
-    } catch (e) { /* fall back to published data */ }
-    return data;
+    // The public website always shows the truly-published content, identical
+    // for every visitor. (Editing/preview happens inside the Staff Dashboard.)
+    return window.SITE_DATA || {};
   }
 
   function esc(s) {
