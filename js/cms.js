@@ -181,22 +181,82 @@
     return out;
   }
 
+  function villaImgs(v) {
+    if (v.images && v.images.length) return v.images;
+    if (v.image) return [v.image];
+    return [];
+  }
+
+  // Full-screen villa viewer with an image carousel + all details
+  window.hfVillaCard = function (idx) {
+    var v = (getData().villas || [])[idx];
+    if (!v) return;
+    var imgs = villaImgs(v);
+    var cur = 0;
+    var overlay = document.createElement('div');
+    overlay.className = 'hf-villa-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(19,32,56,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1.5rem;';
+
+    function render() {
+      var statusColor = String(v.status || '').toLowerCase().indexOf('offer') !== -1 ? '#1B2A4A' : '#2e7d32';
+      var gallery = imgs.length
+        ? '<div style="position:relative;background:#000;">' +
+            '<img src="' + esc(imgs[cur]) + '" alt="' + esc(v.name) + '" style="width:100%;max-height:60vh;object-fit:contain;display:block;">' +
+            (imgs.length > 1 ?
+              '<button class="hf-vc-prev" aria-label="Previous" style="position:absolute;top:50%;left:0.75rem;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);font-size:1.5rem;cursor:pointer;">&#8249;</button>' +
+              '<button class="hf-vc-next" aria-label="Next" style="position:absolute;top:50%;right:0.75rem;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);font-size:1.5rem;cursor:pointer;">&#8250;</button>' +
+              '<div style="position:absolute;bottom:0.75rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:white;font-size:0.8rem;padding:0.25rem 0.75rem;border-radius:999px;">' + (cur + 1) + ' / ' + imgs.length + '</div>'
+              : '') +
+          '</div>'
+        : '<div style="height:200px;background:#eef1f5;display:flex;align-items:center;justify-content:center;color:#889;">No photos yet</div>';
+
+      overlay.innerHTML =
+        '<div class="hf-villa-modal" style="background:white;border-radius:6px;max-width:620px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 25px 80px rgba(0,0,0,0.4);">' +
+        '<button class="hf-vc-close" aria-label="Close" style="position:absolute;top:0.6rem;right:0.9rem;font-size:2rem;line-height:1;cursor:pointer;color:white;background:rgba(0,0,0,0.35);border:none;width:40px;height:40px;border-radius:50%;z-index:2;">&times;</button>' +
+        gallery +
+        '<div style="padding:1.75rem 2rem 2rem;">' +
+        '<span style="display:inline-block;background:' + (statusColor === '#2e7d32' ? '#eef5ee' : '#eef0f6') + ';color:' + statusColor + ';font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.3rem 0.8rem;border-radius:999px;margin-bottom:0.75rem;">' + esc(v.status || 'Available Now') + '</span>' +
+        (v.tag ? '<p style="color:var(--gold);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;margin:0 0 0.4rem;">' + esc(v.tag) + '</p>' : '') +
+        '<h2 style="font-family:var(--font-serif);font-size:2rem;color:var(--primary-green);margin:0 0 0.75rem;">' + esc(v.name) + '</h2>' +
+        '<div style="margin-bottom:0.75rem;">' + villaFeatureLines(v) + '</div>' +
+        (v.price ? '<p style="font-family:var(--font-serif);font-size:1.8rem;color:var(--primary-green);margin:0 0 1rem;">' + esc(v.price) + '</p>' : '') +
+        (v.description ? '<p style="font-size:0.95rem;line-height:1.65;color:#555;margin:0 0 1.5rem;">' + esc(v.description) + '</p>' : '') +
+        '<a href="contact.html" style="display:inline-block;background:var(--primary-green);color:white;padding:0.85rem 2rem;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;text-decoration:none;border-radius:2px;">Enquire About This Villa</a>' +
+        '</div></div>';
+
+      overlay.querySelector('.hf-vc-close').addEventListener('click', close);
+      var p = overlay.querySelector('.hf-vc-prev'), n = overlay.querySelector('.hf-vc-next');
+      if (p) p.addEventListener('click', function (e) { e.stopPropagation(); cur = (cur - 1 + imgs.length) % imgs.length; render(); });
+      if (n) n.addEventListener('click', function (e) { e.stopPropagation(); cur = (cur + 1) % imgs.length; render(); });
+    }
+    function close() { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function esc3(e) {
+      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc3); }
+      if (e.key === 'ArrowLeft' && imgs.length > 1) { cur = (cur - 1 + imgs.length) % imgs.length; render(); }
+      if (e.key === 'ArrowRight' && imgs.length > 1) { cur = (cur + 1) % imgs.length; render(); }
+    });
+    render();
+    document.body.appendChild(overlay);
+  };
+
   var villasEl = document.getElementById('hf-villas');
   if (villasEl) {
     if (data.villas && data.villas.length) {
-      villasEl.innerHTML = data.villas.map(function (v) {
-        return '<div class="grid-card" style="display: flex; flex-direction: column;">' +
+      villasEl.innerHTML = data.villas.map(function (v, idx) {
+        var imgs = villaImgs(v);
+        return '<div class="grid-card" style="display: flex; flex-direction: column; cursor: pointer;" onclick="hfVillaCard(' + idx + ')">' +
           '<div style="height: 230px; overflow: hidden; position: relative; background: var(--cream-dark, #eee);">' +
-          (v.image ? '<img src="' + esc(v.image) + '" alt="' + esc(v.name) + '" style="width:100%;height:100%;object-fit:cover;">' : '') +
+          (imgs.length ? '<img src="' + esc(imgs[0]) + '" alt="' + esc(v.name) + '" style="width:100%;height:100%;object-fit:cover;">' : '') +
           '<span style="position: absolute; top: 0.9rem; left: 0.9rem; background: ' + (String(v.status || '').toLowerCase().indexOf('offer') !== -1 ? 'rgba(27,42,74,0.92)' : 'rgba(46,125,50,0.92)') + '; color: white; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.35rem 0.85rem; border-radius: 999px;">' + esc(v.status || 'Available Now') + '</span>' +
+          (imgs.length > 1 ? '<span style="position:absolute;bottom:0.9rem;right:0.9rem;background:rgba(0,0,0,0.55);color:white;font-size:0.72rem;padding:0.25rem 0.7rem;border-radius:999px;">&#128247; ' + imgs.length + '</span>' : '') +
           '</div>' +
           '<div class="grid-card-content" style="flex: 1; display: flex; flex-direction: column;">' +
           (v.tag ? '<p style="color: var(--gold); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin: 0 0 0.4rem;">' + esc(v.tag) + '</p>' : '') +
           '<h3 style="margin-bottom: 0.75rem;">' + esc(v.name) + '</h3>' +
           villaFeatureLines(v) +
           (v.price ? '<p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--primary-green); margin: 0.75rem 0;">' + esc(v.price) + '</p>' : '') +
-          (v.description ? '<p style="font-size: 0.9rem; margin-bottom: 1rem;">' + esc(v.description) + '</p>' : '') +
-          '<div style="margin-top: auto;"><a href="contact.html" class="btn btn-outline">View Villa &amp; Enquire</a></div>' +
+          '<div style="margin-top: auto;"><span class="btn btn-outline">View Villa &amp; Photos</span></div>' +
           '</div></div>';
       }).join('');
     } else {
