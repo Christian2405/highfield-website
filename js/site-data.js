@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-23T17:41:09.205Z
+// Published from the Staff Dashboard on 2026-07-23T17:45:09.001Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -65,7 +65,7 @@ window.SITE_DATA = {
       "role": "General Manager",
       "image": "https://dzpdbgwih7u1r.cloudfront.net/96a71384-d144-4b36-8a0c-7381de262bad/9c4514fc-1863-4461-8c6c-bd460bb2a346/9c4514fc-1af7-449b-a98f-83f358f4aab5/w2400h1601-15f9bb51f361aee6c99ccefd508a7596.jpg",
       "bio": "Sheryl has led Highfield Country Estate for over 10 years, guiding it to multiple NZ's Best award nominations and a win in 2020. She is passionate about creating a community where every resident feels truly at home.",
-      "funfact": "Sheryl is an avid baker and her lemon cake is legendary among residents — she's been asked to enter MasterChef more than once!"
+      "funfact": "Sheryl is an avid bake"
     },
     {
       "name": "Mark Corin",
@@ -1834,20 +1834,12 @@ window.SITE_DATA = {
       "author": "David & Shona Hollinshead"
     },
     {
-      "quote": "The directors and staff in the village are absolutely fantastic to deal with and are so friendly and approachable. The village has this wonderful friendly feeling and family are always welcome. The amenities are great — swimming pool, bowling green and gym to name but a few.",
-      "author": "David & Shona Hollinshead"
+      "quote": "I moved to T A to be closer to my family who all live in the surrounding area. I love my villa especially in the way I can potter in my own garden and veggie garden. I also enjoy sharing my home with visitors to the village. The garden team, office team and directors are like family. I feel very well looked after here",
+      "author": "Colleen Logan"
     },
     {
-      "quote": "Having the maintenance, lawn mowing, and gardening done for you takes the stress out of going on holiday and coming back to an overgrown garden and lawns. We do a little gardening, but it is nice to be having a cup of coffee and watching our lawns being mown.",
-      "author": "David & Shona Hollinshead"
-    },
-    {
-      "quote": "One of the best decisions we have made has been to move into Highfield, where we know, and the family knows, that we live in a safe, happy, and friendly environment where people look out for one another. We have many envious friends who have visited us and are now looking for a village to live in.",
-      "author": "David & Shona Hollinshead"
-    },
-    {
-      "quote": "We love living here and if you are lucky enough to get the opportunity to purchase a villa, please come and join us and enjoy your retirement. They cannot find one that has such spacious villas and such beautiful grounds.",
-      "author": "David & Shona Hollinshead"
+      "quote": "After living a lifetime on the open country on a lifestyle block we had a lot of soul searching to do when our chance came to move to Highfield. From the start of moving out throughout the time we have been here, our thanks to everyone + staff for a smooth move. They were all very helpful and they made us feel very welcome.\n\nThere is so much one can do, e.g. Bowls, cards, evening socials, etc. A real fun time had by all. Our family are happy that we are so settled and enjoying our life at a slower pace.",
+      "author": "Frances and Les Mosen."
     }
   ],
   "news": [
