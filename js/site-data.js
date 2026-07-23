@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-23T17:06:08.391Z
+// Published from the Staff Dashboard on 2026-07-23T17:41:09.205Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1899,7 +1899,7 @@ window.SITE_DATA = {
       "photos": [
         {
           "src": "https://rocketspark.pictures/CF-a0fada23-c4d1-42cc-8fb0-dce01296a823/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/edc7ed4045e20cb7578a1e4f7e120535.jpg",
-          "alt": "Lodge Fountain Entrance"
+          "alt": "Lodge Fountain "
         },
         {
           "src": "https://rocketspark.pictures/CF-a0fada1e-2b29-4f26-a1e4-b51cb29b3406/fit=cover,gravity=auto,width=800,height=600,sharpen=1.00/17904c80bee8ea301909bb1b33410ad9.jpg",
