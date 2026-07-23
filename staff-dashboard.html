@@ -625,6 +625,7 @@
       }).then(function (res) {
         btn.disabled = false; btn.textContent = oldText;
         if (res.ok && res.j.ok) {
+          try { localStorage.removeItem('highfield-cms-draft'); } catch (e) {}
           toast('✓ Published! Everyone will see your changes on the website within about a minute.');
         } else {
           toast('Could not publish: ' + ((res.j && res.j.error) || 'please try again') + '.');
