@@ -88,12 +88,9 @@
           <div id="formSuccess" style="display: none; background: #eef7ee; border: 1px solid #a8d5a8; color: #2e7d32; padding: 1.25rem 1.5rem; border-radius: 3px; margin-bottom: 1.5rem;">
             <strong>Thank you!</strong> Your message has been sent. We'll be in touch shortly.
           </div>
-          <form id="contactForm" action="https://formsubmit.co/manager@highfieldcountryestate.co.nz" method="POST">
-            <input type="hidden" name="_subject" value="New enquiry from the Highfield website">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" id="formNext" value="">
-            <input type="text" name="_honey" style="display:none;">
+          <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -117,12 +114,29 @@
             <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Send Message</button>
           </form>
           <script>
-            // Send visitors back to this page with a thank-you message after submitting
-            document.getElementById('formNext').value = window.location.origin + window.location.pathname + '?sent=1';
-            if (window.location.search.indexOf('sent=1') !== -1) {
-              document.getElementById('formSuccess').style.display = 'block';
-              document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            // Submit straight to Netlify Forms (no third party, no verification).
+            // The enquiry is emailed to the address set in Netlify → Forms → Notifications.
+            (function () {
+              var form = document.getElementById('contactForm');
+              var success = document.getElementById('formSuccess');
+              form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true; btn.textContent = 'Sending…';
+                fetch('/', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                  body: new URLSearchParams(new FormData(form)).toString()
+                }).then(function () {
+                  form.style.display = 'none';
+                  success.style.display = 'block';
+                  success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }).catch(function () {
+                  btn.disabled = false; btn.textContent = 'Send Message';
+                  alert('Sorry, something went wrong. Please email us directly at manager@highfieldcountryestate.co.nz or call 07 871 2020.');
+                });
+              });
+            })();
           </script>
         </div>
       </div>
