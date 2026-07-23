@@ -333,8 +333,25 @@
     function clearAwardImage(i) { DATA.awards[i].image = ''; renderAwards(); }
     function setNewsImage(i) { pickImage(function (d) { DATA.news[i].image = d; renderNews(); }); }
     function clearNewsImage(i) { DATA.news[i].image = ''; renderNews(); }
-    function setVillaImage(i) { pickImage(function (d) { DATA.villas[i].image = d; renderVillas(); }); }
-    function clearVillaImage(i) { DATA.villas[i].image = ''; renderVillas(); }
+    // Villas can have several photos (v.images array). Migrate any old single v.image.
+    function villaImages(v) {
+      if (!v.images) v.images = v.image ? [v.image] : [];
+      return v.images;
+    }
+    function villaPhotos(i, v) {
+      var imgs = villaImages(v);
+      var thumbs = imgs.map(function (src, j) {
+        return '<div style="position:relative;display:inline-block;margin:0 0.5rem 0.5rem 0;">' +
+          '<img class="thumb" style="width:96px;height:70px;" src="' + esc(src) + '" alt="">' +
+          '<button class="btn btn-ghost btn-sm" style="position:absolute;top:2px;right:2px;padding:0.1rem 0.4rem;background:rgba(255,255,255,0.9);" onclick="removeVillaImage(' + i + ',' + j + ')">&times;</button>' +
+          '</div>';
+      }).join('');
+      return '<label>Photos (add as many as you like &mdash; visitors can swipe through them)</label>' +
+        '<div>' + thumbs + '</div>' +
+        '<button class="btn btn-primary btn-sm" onclick="addVillaImage(' + i + ')">+ Add Photo</button>';
+    }
+    function addVillaImage(i) { pickImage(function (d) { villaImages(DATA.villas[i]).push(d); renderVillas(); }); }
+    function removeVillaImage(i, j) { villaImages(DATA.villas[i]).splice(j, 1); renderVillas(); }
     function setTeamImage(i) { pickImage(function (d) { DATA.team[i].image = d; renderTeam(); }); }
     function clearTeamImage(i) { DATA.team[i].image = ''; renderTeam(); }
     function setGalleryImage(si, pi) { pickImage(function (d) { DATA.gallery[si].photos[pi].src = d; renderGallery(); }); }
@@ -560,8 +577,6 @@
           '<div class="card-actions"><button class="btn btn-ghost btn-sm" onclick="removeVilla(' + i + ')">Remove</button></div></div>' +
           '<label>Name (e.g. Villa 42, 397 Swarbrick Drive)</label>' +
           '<input type="text" value="' + esc(v.name) + '" oninput="DATA.villas[' + i + '].name = this.value">' +
-          '<label>Villa number on the village map (e.g. 42 &mdash; turns that villa gold on the map)</label>' +
-          '<input type="text" value="' + esc(v.number || '') + '" oninput="DATA.villas[' + i + '].number = this.value">' +
           '<label>Highlight tag (optional, e.g. Premium New Listing)</label>' +
           '<input type="text" value="' + esc(v.tag || '') + '" oninput="DATA.villas[' + i + '].tag = this.value">' +
           '<label>Bedrooms (e.g. 2, or &ldquo;2 bedrooms + study&rdquo;)</label>' +
@@ -576,13 +591,13 @@
           '<input type="text" value="' + esc(v.price) + '" oninput="DATA.villas[' + i + '].price = this.value">' +
           '<label>Status label (e.g. Available Now, Under Offer)</label>' +
           '<input type="text" value="' + esc(v.status) + '" oninput="DATA.villas[' + i + '].status = this.value">' +
-          photoControl(v.image, 'setVillaImage(' + i + ')', 'clearVillaImage(' + i + ')') +
+          villaPhotos(i, v) +
           '<label>Description</label>' +
           '<textarea oninput="DATA.villas[' + i + '].description = this.value">' + esc(v.description) + '</textarea>' +
           '</div>';
       }).join('');
     }
-    function addVilla() { DATA.villas.unshift({ name: '', number: '', tag: '', beds: '', baths: '', garage: '', area: '', details: '', price: '', status: 'Available Now', image: '', description: '' }); renderVillas(); focusNewCard('villasList'); }
+    function addVilla() { DATA.villas.unshift({ name: '', tag: '', beds: '', baths: '', garage: '', area: '', details: '', price: '', status: 'Available Now', images: [], description: '' }); renderVillas(); focusNewCard('villasList'); }
     function removeVilla(i) { if (confirm('Remove this villa?')) { DATA.villas.splice(i, 1); renderVillas(); } }
 
     // ---- Save / publish / discard ----
