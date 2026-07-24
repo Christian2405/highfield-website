@@ -115,20 +115,56 @@
   // ---------- NEWS (news.html) ----------
   var newsEl = document.getElementById('hf-news');
   if (newsEl && data.news) {
-    var nhtml = '';
-    data.news.forEach(function (n, i) {
-      var reverse = i % 2 === 1 ? ' reverse' : '';
-      var paras = (n.paragraphs || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
-      nhtml += '<div class="feature-pair' + reverse + '" style="margin-bottom: 4rem;">' +
-        '<div class="feature-image"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '"></div>' +
-        '<div class="feature-text">' +
+    var news = data.news;
+    var params = new URLSearchParams(window.location.search);
+    var articleParam = params.get('article');
+
+    if (articleParam !== null && news[articleParam]) {
+      // ----- Single full-article page -----
+      var n = news[articleParam];
+      var paras = (n.paragraphs || []).filter(function (p) { return p; })
+        .map(function (p) { return '<p style="font-size:1.02rem;line-height:1.8;margin-bottom:1.25rem;color:#444;">' + esc(p) + '</p>'; }).join('');
+      newsEl.innerHTML =
+        '<article style="max-width:760px;margin:0 auto;">' +
+        '<a href="news.html" style="display:inline-block;margin-bottom:1.5rem;color:var(--gold);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">&larr; Back to News</a>' +
+        (n.image ? '<img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" style="width:100%;max-height:420px;object-fit:cover;border-radius:4px;margin-bottom:1.75rem;">' : '') +
         '<span class="section-label">' + esc(n.category) + '</span>' +
-        '<h2>' + esc(n.title) + '</h2>' +
-        '<p style="color: var(--text-mid); font-size: 0.85rem; margin-bottom: 1rem;">' + esc(n.date) + '</p>' +
+        '<h1 style="font-family:var(--font-serif);color:var(--primary-green);font-size:clamp(1.9rem,4vw,2.7rem);margin:0.4rem 0 0.5rem;">' + esc(n.title) + '</h1>' +
+        '<p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1.75rem;">' + esc(n.date) + '</p>' +
         paras +
-        '</div></div>';
-    });
-    newsEl.innerHTML = nhtml;
+        '<div style="margin-top:2rem;"><a href="contact.html" class="btn btn-outline">Get in Touch</a></div>' +
+        '</article>';
+      var titleEl = document.querySelector('title');
+      if (titleEl) titleEl.textContent = n.title + ' — Highfield Country Estate';
+      var headingEl = document.getElementById('hf-news-heading');
+      if (headingEl) headingEl.style.display = 'none';
+    } else {
+      // ----- Article list: newest 4, then "Show more" reveals the rest in a grid -----
+      function card(n, i) {
+        var excerpt = ((n.paragraphs || [])[0] || '');
+        if (excerpt.length > 140) excerpt = excerpt.slice(0, 140).replace(/\s+\S*$/, '') + '…';
+        return '<a href="news.html?article=' + i + '" class="grid-card" style="display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;">' +
+          '<div style="height:200px;overflow:hidden;background:#eef1f5;">' +
+          (n.image ? '<img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" style="width:100%;height:100%;object-fit:cover;">' : '') +
+          '</div>' +
+          '<div class="grid-card-content" style="flex:1;display:flex;flex-direction:column;">' +
+          '<span style="color:var(--gold);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:0.4rem;">' + esc(n.category) + '</span>' +
+          '<h3 style="margin-bottom:0.35rem;">' + esc(n.title) + '</h3>' +
+          '<p style="color:var(--text-mid);font-size:0.8rem;margin-bottom:0.75rem;">' + esc(n.date) + '</p>' +
+          '<p style="font-size:0.92rem;margin-bottom:1rem;">' + esc(excerpt) + '</p>' +
+          '<span style="margin-top:auto;color:var(--gold);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Read More &rarr;</span>' +
+          '</div></a>';
+      }
+      var firstFour = news.slice(0, 4).map(card).join('');
+      var rest = news.slice(4).map(card).join('');
+      var html = '<div class="grid grid-2">' + firstFour + '</div>';
+      if (news.length > 4) {
+        html += '<div id="hf-news-more" style="display:none;margin-top:2rem;"><div class="grid grid-3">' + rest + '</div></div>' +
+          '<div class="text-center" style="margin-top:2.5rem;"><button id="hf-news-morebtn" class="btn btn-primary" onclick="var m=document.getElementById(\'hf-news-more\');m.style.display=\'block\';this.style.display=\'none\';">Show More News</button></div>';
+      }
+      if (!news.length) html = '<p style="text-align:center;color:var(--text-mid);">No news articles yet.</p>';
+      newsEl.innerHTML = html;
+    }
   }
 
   // ---------- WEEKLY TRIPS & EVENTS (facilities.html) ----------
