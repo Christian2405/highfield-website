@@ -139,8 +139,22 @@
       var headingEl = document.getElementById('hf-news-heading');
       if (headingEl) headingEl.style.display = 'none';
     } else {
-      // ----- Article list: newest 4, then "Show more" reveals the rest in a grid -----
-      function card(n, i) {
+      // ----- First 4 as the original feature-pair rows, then "Show more" reveals the rest in a grid -----
+      function featurePair(n, i) {
+        var reverse = i % 2 === 1 ? ' reverse' : '';
+        var excerpt = ((n.paragraphs || [])[0] || '');
+        if (excerpt.length > 260) excerpt = excerpt.slice(0, 260).replace(/\s+\S*$/, '') + '…';
+        return '<a href="news.html?article=' + i + '" class="feature-pair' + reverse + '" style="margin-bottom: 4rem; text-decoration:none; color:inherit;">' +
+          '<div class="feature-image"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '"></div>' +
+          '<div class="feature-text">' +
+          '<span class="section-label">' + esc(n.category) + '</span>' +
+          '<h2>' + esc(n.title) + '</h2>' +
+          '<p style="color: var(--text-mid); font-size: 0.85rem; margin-bottom: 1rem;">' + esc(n.date) + '</p>' +
+          '<p>' + esc(excerpt) + '</p>' +
+          '<span style="display:inline-block;margin-top:0.5rem;color:var(--gold);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Read More &rarr;</span>' +
+          '</div></a>';
+      }
+      function gridCard(n, i) {
         var excerpt = ((n.paragraphs || [])[0] || '');
         if (excerpt.length > 140) excerpt = excerpt.slice(0, 140).replace(/\s+\S*$/, '') + '…';
         return '<a href="news.html?article=' + i + '" class="grid-card" style="display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;">' +
@@ -155,10 +169,9 @@
           '<span style="margin-top:auto;color:var(--gold);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Read More &rarr;</span>' +
           '</div></a>';
       }
-      var firstFour = news.slice(0, 4).map(card).join('');
-      var rest = news.slice(4).map(card).join('');
-      var html = '<div class="grid grid-2">' + firstFour + '</div>';
+      var html = news.slice(0, 4).map(featurePair).join('');
       if (news.length > 4) {
+        var rest = news.slice(4).map(function (n, k) { return gridCard(n, k + 4); }).join('');
         html += '<div id="hf-news-more" style="display:none;margin-top:2rem;"><div class="grid grid-3">' + rest + '</div></div>' +
           '<div class="text-center" style="margin-top:2.5rem;"><button id="hf-news-morebtn" class="btn btn-primary" onclick="var m=document.getElementById(\'hf-news-more\');m.style.display=\'block\';this.style.display=\'none\';">Show More News</button></div>';
       }
