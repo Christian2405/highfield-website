@@ -127,7 +127,7 @@
       newsEl.innerHTML =
         '<article style="max-width:760px;margin:0 auto;">' +
         '<a href="news.html" style="display:inline-block;margin-bottom:1.5rem;color:var(--gold);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">&larr; Back to News</a>' +
-        (n.image ? '<img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" style="width:100%;max-height:420px;object-fit:cover;border-radius:4px;margin-bottom:1.75rem;">' : '') +
+        (n.image ? '<img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" style="display:block;width:auto;max-width:100%;height:auto;margin:0 auto 1.75rem;border-radius:4px;">' : '') +
         '<span class="section-label">' + esc(n.category) + '</span>' +
         '<h1 style="font-family:var(--font-serif);color:var(--primary-green);font-size:clamp(1.9rem,4vw,2.7rem);margin:0.4rem 0 0.5rem;">' + esc(n.title) + '</h1>' +
         '<p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1.75rem;">' + esc(n.date) + '</p>' +
