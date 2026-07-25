@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-25T23:24:59.293Z
+// Published from the Staff Dashboard on 2026-07-25T23:26:18.614Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1829,6 +1829,10 @@ window.SITE_DATA = {
     ]
   },
   "testimonials": [
+    {
+      "quote": "I moved to T A to be closer to my family who all live in the surrounding area. I love my villa especially in the way I can potter in my own garden and veggie garden. I also enjoy sharing my home with visitors to the village. The garden team, office team and directors are like family. I feel very well looked after here. ",
+      "author": "Colleen Logan "
+    },
     {
       "quote": "We moved into Highfield Retirement Village in April 2014.  We were downsizing from an acreage outside of Hamilton.  We were a little apprehensive about living ‘check by jowl’ as the setup of some retirement villages seemed to be.\nThe developers heeded advice to ensure resident’s need for privacy and for personal space was taken into account when designing the village and its surrounds.  Our grounds are planted to encourage the return of birdlife as are the water features we have.  We were proud to be part of the local Altrusa Garden Ramble.  The quality of the planting gives the village an air of tranquillity and vibrancy.  Visitors are in awe of our surrounds.  We too love them.  The walking path is well used by residents – a lovely way to exercise and to catch up with other residents on the way.\nThe residents have been actively encouraged to share their life experiences, talents and interests with others in the village, hence the variety of activities or interest opportunities available at Highfield.  We organise, coordinate and lead most of our social interaction ourselves.\nWe have a strong community spirit, and look out for and care about others without intruding on their privacy.\nMoving into Highfield was the best decision we have ever made. We feel blessed to be part of this special community of people, many of whom are now friends.",
       "author": "Peter and Beryl Emery"
