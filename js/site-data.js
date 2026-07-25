@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-25T23:26:18.614Z
+// Published from the Staff Dashboard on 2026-07-25T23:29:13.834Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1829,6 +1829,10 @@ window.SITE_DATA = {
     ]
   },
   "testimonials": [
+    {
+      "quote": "After living a lifetime in the open country on lifestyle block, we had a lot of soul searching to do when our chance came up to move into Highfield. From the start of moving and throughout the 8 months we have been here, our thanks to management & staff for a smooth move. They were all very helpful and they made us feel very welcome.\n\nThere is so much one can do: e.g. bowls, cards, evening socials etc. A real fun time had by all. Our family are happy that we are settled and enjoying our life at a slower pace",
+      "author": "Frances & Pat Mason"
+    },
     {
       "quote": "I moved to T A to be closer to my family who all live in the surrounding area. I love my villa especially in the way I can potter in my own garden and veggie garden. I also enjoy sharing my home with visitors to the village. The garden team, office team and directors are like family. I feel very well looked after here. ",
       "author": "Colleen Logan "
