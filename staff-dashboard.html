@@ -274,11 +274,13 @@
     }
 
     // ---- Data ----
+    // Always load the LIVE, published content. The dashboard is therefore
+    // identical on every computer and always matches the public website.
+    // No per-browser drafts are ever restored — this was the cause of the
+    // "different on my computer vs Dad's / vs live" bug. Any old draft left
+    // in this browser from before is purged so it can never resurface.
+    try { localStorage.removeItem('highfield-cms-draft'); } catch (e) {}
     var DATA = JSON.parse(JSON.stringify(window.SITE_DATA));
-    try {
-      var draft = localStorage.getItem('highfield-cms-draft');
-      if (draft) DATA = JSON.parse(draft);
-    } catch (e) {}
     // Older saved drafts may not have the newer sections — fill them in
     if (!DATA.trips) DATA.trips = JSON.parse(JSON.stringify(window.SITE_DATA.trips || []));
     if (!DATA.villas) DATA.villas = JSON.parse(JSON.stringify(window.SITE_DATA.villas || []));
@@ -611,7 +613,6 @@
     // One button: save the working copy and push it live to everyone.
     function saveAndPublish() {
       var btn = document.getElementById('saveBtn');
-      try { localStorage.setItem('highfield-cms-draft', JSON.stringify(DATA)); } catch (e) {}
       btn.disabled = true;
       var oldText = btn.textContent;
       btn.textContent = 'Publishing…';
