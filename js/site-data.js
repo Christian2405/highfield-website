@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-25T23:29:13.834Z
+// Published from the Staff Dashboard on 2026-07-25T23:30:06.628Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1831,7 +1831,7 @@ window.SITE_DATA = {
   "testimonials": [
     {
       "quote": "After living a lifetime in the open country on lifestyle block, we had a lot of soul searching to do when our chance came up to move into Highfield. From the start of moving and throughout the 8 months we have been here, our thanks to management & staff for a smooth move. They were all very helpful and they made us feel very welcome.\n\nThere is so much one can do: e.g. bowls, cards, evening socials etc. A real fun time had by all. Our family are happy that we are settled and enjoying our life at a slower pace",
-      "author": "Frances & Pat Mason"
+      "author": "Francis and Pat Mason"
     },
     {
       "quote": "I moved to T A to be closer to my family who all live in the surrounding area. I love my villa especially in the way I can potter in my own garden and veggie garden. I also enjoy sharing my home with visitors to the village. The garden team, office team and directors are like family. I feel very well looked after here. ",
@@ -1843,11 +1843,11 @@ window.SITE_DATA = {
     },
     {
       "quote": "I first came to look at the village with a friend about six years ago. It was in its early development stage. Being a builder, I looked at the plans and was suitable impressed and realised that moving to Highfield Country Estate would be ideal for my wife and myself. \nThe next step was to go home and talk my wife and family into it. Shona finally relented and we put a deposit down thinking it was going to be years before we moved in. About two years later we were living here. \nWe got the dream position, and it was so easy to organise any changes we wanted to make to the property. The directors and staff in the village are absolutely fantastic to deal with and are so friendly and approachable. The village has this wonderful friendly feeling and family are always welcome.\nThe amenities are great, swimming pool, bowling green and gym to name but a few. There are many other activities held at the lodge and you can join these at your leisure.\nHaving the maintenance, lawn mowing, and gardening done for you takes the stress out of going on holiday and coming back to an overgrown garden and lawns. We do a little gardening, but it is nice to be having a cup of coffee and watching our lawns being mown.\n\nOne of the best decisions we have made as been to move into Highfield, where we know, and the family knows that we live in a safe, happy, and friendly environment where people look out for one another. We have many envious friends who have visited us and are now looking for a village to live in. They cannot find one that has such spacious villas and such beautiful grounds. \nWe love living here and if you are lucky enough to get the opportunity to purchase a villa, please come and join us and enjoy your retirement.",
-      "author": "David & Shona Hollinshead"
+      "author": "David and Shona Hollinshead"
     },
     {
       "quote": "As I sit here in our lovely spacious home surrounded by our beautiful garden and reflect on the past 2½ years, I do so with great pleasure.\n\nI am sure I can speak for my husband too, when I say that when we made the decision to move to Highfield Country Estate Retirement Village about 3 years ago, we made the right choice.\n\nI first came to the Village with my daughter in 2014 to visit some friends who had moved to Highfield a week before.  I met some very happy people and the quality of the houses impressed me greatly.  Although the Village was still being developed I fell in love with it straight away.\n\nMy husband Peter and I had visited quite a lot of retirement villages, but Highfield out shone them all.\n\nI returned a few weeks later with Peter and, like me, he was amazed by the quality of the homes, the people he met and the wonderful location.  We went home and after a few discussions made an appointment to return and sign up to move to Highfield.\n\nEverything has been catered for, swimming pool and spa, gym, pool tables, two lounges, movie theatre, activities, craft room, hair salon, beauty therapy, library and an amazing menz shed.\n\nWe have indoor and outdoor bowls, ukulele lessons, line dancing, the Highfield Singing Group and weekly coffee trips to numerous cafes in the district and shopping trips to malls in Hamilton.\n\nFunctions are held occasionally in our large dining area and we have happy hour twice a week. There is a great walking track throughout the Village from where the amazing gardens can be enjoyed.\n\nWe have found the Directors and staff to be very approachable and caring and we could not wish for a better place to spend our twilight years.",
-      "author": "Pam & Peter Green"
+      "author": "Pam and Peter Green"
     }
   ],
   "news": [
