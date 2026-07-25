@@ -1,3 +1,4 @@
+// v2026.07.25 — article images render full (never cropped)
 // ============================================================
 // HIGHFIELD CMS RENDERER
 // Renders editable content (awards, testimonials, news, gallery)
