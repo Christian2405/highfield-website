@@ -485,14 +485,12 @@
           '<label>Date shown (e.g. January 2026)</label>' +
           '<input type="text" value="' + esc(n.date) + '" oninput="DATA.news[' + i + '].date = this.value">' +
           photoControl(n.image, 'setNewsImage(' + i + ')', 'clearNewsImage(' + i + ')') +
-          '<label>First paragraph</label>' +
-          '<textarea oninput="DATA.news[' + i + '].paragraphs[0] = this.value">' + esc((n.paragraphs || [])[0] || '') + '</textarea>' +
-          '<label>Second paragraph</label>' +
-          '<textarea oninput="DATA.news[' + i + '].paragraphs[1] = this.value">' + esc((n.paragraphs || [])[1] || '') + '</textarea>' +
+          '<label>Article text (leave a blank line between paragraphs)</label>' +
+          '<textarea style="min-height:240px" oninput="DATA.news[' + i + '].paragraphs = this.value.split(/\\n\\s*\\n/)">' + esc((n.paragraphs || []).join('\n\n')) + '</textarea>' +
           '</div>';
       }).join('');
     }
-    function addNews() { DATA.news.unshift({ category: '', title: '', date: '', image: '', paragraphs: ['', ''] }); renderNews(); focusNewCard('newsList'); }
+    function addNews() { DATA.news.unshift({ category: '', title: '', date: '', image: '', paragraphs: [''] }); renderNews(); focusNewCard('newsList'); }
     function removeNews(i) { if (confirm('Remove this article?')) { DATA.news.splice(i, 1); renderNews(); } }
     function moveNews(i, dir) {
       var item = DATA.news.splice(i, 1)[0];
