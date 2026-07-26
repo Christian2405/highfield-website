@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-26T20:51:54.921Z
+// Published from the Staff Dashboard on 2026-07-26T20:55:10.746Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -2415,5 +2415,6 @@ window.SITE_DATA = {
         }
       ]
     }
-  ]
+  ],
+  "pageImages": {}
 };
