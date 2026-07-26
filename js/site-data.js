@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-07-25T23:30:06.628Z
+// Published from the Staff Dashboard on 2026-07-26T06:26:50.830Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1842,7 +1842,7 @@ window.SITE_DATA = {
       "author": "Peter and Beryl Emery"
     },
     {
-      "quote": "I first came to look at the village with a friend about six years ago. It was in its early development stage. Being a builder, I looked at the plans and was suitable impressed and realised that moving to Highfield Country Estate would be ideal for my wife and myself. \nThe next step was to go home and talk my wife and family into it. Shona finally relented and we put a deposit down thinking it was going to be years before we moved in. About two years later we were living here. \nWe got the dream position, and it was so easy to organise any changes we wanted to make to the property. The directors and staff in the village are absolutely fantastic to deal with and are so friendly and approachable. The village has this wonderful friendly feeling and family are always welcome.\nThe amenities are great, swimming pool, bowling green and gym to name but a few. There are many other activities held at the lodge and you can join these at your leisure.\nHaving the maintenance, lawn mowing, and gardening done for you takes the stress out of going on holiday and coming back to an overgrown garden and lawns. We do a little gardening, but it is nice to be having a cup of coffee and watching our lawns being mown.\n\nOne of the best decisions we have made as been to move into Highfield, where we know, and the family knows that we live in a safe, happy, and friendly environment where people look out for one another. We have many envious friends who have visited us and are now looking for a village to live in. They cannot find one that has such spacious villas and such beautiful grounds. \nWe love living here and if you are lucky enough to get the opportunity to purchase a villa, please come and join us and enjoy your retirement.",
+      "quote": "One of the best decisions we have made as been to move into Highfield, where we know, and the family knows that we live in a safe, happy, and friendly environment where people look out for one another. We have many envious friends who have visited us and are now looking for a village to live in. They cannot find one that has such spacious villas and such beautiful grounds. \nWe love living here and if you are lucky enough to get the opportunity to purchase a villa, please come and join us and enjoy your retirement.",
       "author": "David and Shona Hollinshead"
     },
     {
