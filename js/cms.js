@@ -34,6 +34,22 @@
     });
   }
 
+  // ---------- EDITABLE PAGE PHOTOS ----------
+  // Any element with data-img="key" gets its photo from data.pageImages[key].
+  // <img> elements have their src set; everything else gets a CSS background.
+  if (data.pageImages) {
+    document.querySelectorAll('[data-img]').forEach(function (el) {
+      var key = el.getAttribute('data-img');
+      var url = data.pageImages[key];
+      if (url == null || url === '') return;
+      if (el.tagName === 'IMG') {
+        el.src = url;
+      } else {
+        el.style.backgroundImage = "url('" + url.replace(/'/g, "%27") + "')";
+      }
+    });
+  }
+
   // ---------- LIGHTBOX (used by award certificates) ----------
   window.hfShowLightbox = function (src) {
     var overlay = document.createElement('div');
