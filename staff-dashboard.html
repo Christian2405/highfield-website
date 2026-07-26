@@ -171,6 +171,7 @@
     <div class="tab" data-tab="trips" onclick="showTab('trips')">Trips &amp; Events</div>
     <div class="tab" data-tab="villas" onclick="showTab('villas')">Available Villas</div>
     <div class="tab" data-tab="pagetext" onclick="showTab('pagetext')">Page Text</div>
+    <div class="tab" data-tab="pagephotos" onclick="showTab('pagephotos')">Page Photos</div>
   </nav>
 
   <main class="wrap">
@@ -251,6 +252,13 @@
       <div id="pageTextList"></div>
     </section>
 
+    <!-- PAGE PHOTOS -->
+    <section class="panel" id="panel-pagephotos">
+      <div class="panel-head"><h2>Page Photos</h2></div>
+      <p class="panel-sub">The main photos across the website &mdash; the big banner at the top of each page, the section photos, and the bottom banners. Click &ldquo;Replace Photo&rdquo; to upload your own picture from your computer. Changes appear live once you Save &amp; Publish.</p>
+      <div id="pagePhotosList"></div>
+    </section>
+
   </main>
 
   <div class="savebar">
@@ -286,9 +294,13 @@
     if (!DATA.villas) DATA.villas = JSON.parse(JSON.stringify(window.SITE_DATA.villas || []));
     if (!DATA.team) DATA.team = JSON.parse(JSON.stringify(window.SITE_DATA.team || []));
     if (!DATA.pageText) DATA.pageText = JSON.parse(JSON.stringify(window.SITE_DATA.pageText || {}));
+    if (!DATA.pageImages) DATA.pageImages = JSON.parse(JSON.stringify(window.SITE_DATA.pageImages || {}));
     var PT_LABELS = window.SITE_DATA.pageTextLabels || {};
     var PT_ORDER = window.SITE_DATA.pageTextOrder || [];
     var PT_PAGES = window.SITE_DATA.pageTextPages || {};
+    var PI_LABELS = window.SITE_DATA.pageImagesLabels || {};
+    var PI_ORDER = window.SITE_DATA.pageImagesOrder || [];
+    var PI_PAGES = window.SITE_DATA.pageImagesPages || {};
 
     function esc(s) {
       return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -439,6 +451,32 @@
       });
       el.innerHTML = html || '<div class="empty-note">No editable text found.</div>';
     }
+
+    // ---- PAGE PHOTOS ----
+    function renderPageImages() {
+      var el = document.getElementById('pagePhotosList');
+      if (!PI_ORDER.length) { el.innerHTML = '<div class="empty-note">No editable photos found.</div>'; return; }
+      var groups = {};
+      PI_ORDER.forEach(function (key) {
+        var page = key.slice(0, key.lastIndexOf('.'));
+        (groups[page] = groups[page] || []).push(key);
+      });
+      var html = '';
+      Object.keys(groups).forEach(function (page) {
+        html += '<div class="section-head"><h3>' + esc(PI_PAGES[page] || page) + '</h3></div>';
+        groups[page].forEach(function (key) {
+          var label = (PI_LABELS[key] || key).replace(/^[^—]*—\s*/, '');
+          var cur = DATA.pageImages[key] || '';
+          html += '<div class="card"><label>' + esc(label) + '</label>' +
+            '<div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">' +
+            (cur ? '<img class="img-preview" style="margin-top:0;max-height:90px;" src="' + esc(cur) + '" alt="">' : '') +
+            '<button class="btn btn-primary btn-sm" onclick="setPageImage(\'' + key + '\')">Replace Photo</button>' +
+            '</div></div>';
+        });
+      });
+      el.innerHTML = html;
+    }
+    function setPageImage(key) { pickImage(function (d) { DATA.pageImages[key] = d; renderPageImages(); }); }
 
     // ---- TEAM ----
     function renderTeam() {
@@ -652,6 +690,7 @@
       renderTrips();
       renderVillas();
       renderPageText();
+      renderPageImages();
     }
     renderAll();
   </script>
