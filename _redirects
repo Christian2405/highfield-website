@@ -1,0 +1,30 @@
+# Redirects from the old Rocketspark page addresses to the new site pages.
+# Keeps old Google links, bookmarks, and directory listings working (301 = moved permanently).
+
+/about-us                     /                        301
+/about-us/                    /                        301
+/facilities-and-activities    /facilities.html         301
+/facilities-and-activities/   /facilities.html         301
+/our-team                     /testimonials.html       301
+/our-team/                    /testimonials.html       301
+/our-location                 /te-awamutu.html         301
+/our-location/                /te-awamutu.html         301
+/testimonials                 /testimonials.html       301
+/testimonials/                /testimonials.html       301
+/our-villas                   /villas.html             301
+/our-villas/                  /villas.html             301
+/villa-floor-plans            /villas.html             301
+/villa-floor-plans/           /villas.html             301
+/villas-for-sale              /available-villas.html   301
+/villas-for-sale/             /available-villas.html   301
+/faq                          /contact.html            301
+/faq/                         /contact.html            301
+/gallery                      /gallery.html            301
+/gallery/                     /gallery.html            301
+/contact-us                   /contact.html            301
+/contact-us/                  /contact.html            301
+/old-contact-us               /contact.html            301
+/old-contact-us/              /contact.html            301
+/blog                         /news.html               301
+/blog/                        /news.html               301
+/blog/*                       /news.html               301
