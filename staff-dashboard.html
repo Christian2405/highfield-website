@@ -306,7 +306,24 @@
       return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // ---- Image picker: choose a file, auto-resize, store in site data ----
+    // ---- Upload a resized image to the server as its own file; returns a URL ----
+    // Photos are stored as separate files (not inside the content file), so the
+    // content stays small and publishing never hits the size limit.
+    function uploadImage(dataUrl, cb) {
+      toast('Uploading photo…');
+      fetch('/.netlify/functions/upload-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: STAFF_PASSWORD, dataUrl: dataUrl })
+      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && res.j && res.j.ok && res.j.url) { cb(res.j.url); toast('✓ Photo added.'); }
+          else { toast('Could not add the photo: ' + ((res.j && res.j.error) || 'please try again') + '.'); }
+        })
+        .catch(function () { toast('Could not add the photo — please check your connection and try again.'); });
+    }
+
+    // ---- Image picker: choose a file, auto-resize, upload it, store its URL ----
     function pickImage(cb) {
       var inp = document.createElement('input');
       inp.type = 'file';
@@ -324,11 +341,41 @@
             c.width = Math.round(img.width * scale);
             c.height = Math.round(img.height * scale);
             c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-            cb(c.toDataURL('image/jpeg', 0.82));
+            uploadImage(c.toDataURL('image/jpeg', 0.82), cb);
           };
           img.src = reader.result;
         };
         reader.readAsDataURL(f);
+      };
+      inp.click();
+    }
+
+    // ---- Multi image picker: choose several files at once, resize each, callback per image ----
+    function pickImages(cb) {
+      var inp = document.createElement('input');
+      inp.type = 'file';
+      inp.accept = 'image/*';
+      inp.multiple = true;
+      inp.onchange = function () {
+        var files = Array.prototype.slice.call(inp.files || []);
+        files.forEach(function (f) {
+          if (!f) return;
+          var reader = new FileReader();
+          reader.onload = function () {
+            var img = new Image();
+            img.onload = function () {
+              var MAX = 1400;
+              var scale = Math.min(1, MAX / Math.max(img.width, img.height));
+              var c = document.createElement('canvas');
+              c.width = Math.round(img.width * scale);
+              c.height = Math.round(img.height * scale);
+              c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+              uploadImage(c.toDataURL('image/jpeg', 0.82), cb);
+            };
+            img.src = reader.result;
+          };
+          reader.readAsDataURL(f);
+        });
       };
       inp.click();
     }
@@ -362,9 +409,9 @@
       }).join('');
       return '<label>Photos (add as many as you like &mdash; visitors can swipe through them)</label>' +
         '<div>' + thumbs + '</div>' +
-        '<button class="btn btn-primary btn-sm" onclick="addVillaImage(' + i + ')">+ Add Photo</button>';
+        '<button class="btn btn-primary btn-sm" onclick="addVillaImage(' + i + ')">+ Add Photos</button>';
     }
-    function addVillaImage(i) { pickImage(function (d) { villaImages(DATA.villas[i]).push(d); renderVillas(); }); }
+    function addVillaImage(i) { pickImages(function (d) { villaImages(DATA.villas[i]).push(d); renderVillas(); }); }
     function removeVillaImage(i, j) { villaImages(DATA.villas[i]).splice(j, 1); renderVillas(); }
     function setTeamImage(i) { pickImage(function (d) { DATA.team[i].image = d; renderTeam(); }); }
     function clearTeamImage(i) { DATA.team[i].image = ''; renderTeam(); }
