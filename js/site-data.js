@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-05T09:13:50.608Z
+// Published from the Staff Dashboard on 2026-08-05T09:15:49.306Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -61,13 +61,13 @@ window.SITE_DATA = {
   "villas": [
     {
       "name": "Villa 35",
-      "tag": "",
-      "beds": "",
-      "baths": "",
-      "garage": "",
-      "area": "",
+      "tag": "New Listing",
+      "beds": "3 Bedrooms",
+      "baths": "2 Toilets + 2 Showers",
+      "garage": "Single Garage",
+      "area": "147",
       "details": "",
-      "price": "",
+      "price": "POA",
       "status": "Available Now",
       "images": [],
       "description": ""
