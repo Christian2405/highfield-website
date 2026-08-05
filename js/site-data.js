@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-05T19:45:46.631Z
+// Published from the Staff Dashboard on 2026-08-05T19:49:10.456Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1892,9 +1892,9 @@ window.SITE_DATA = {
       "paragraphs": [
         "There's plenty happening at the top of the village at the moment, and we're delighted to share how well our new villa development is coming along.",
         "Fourteen new villas are now well advanced, and we're very pleased to confirm that our first new residents are due to move in on 1 October. Landscaping is already well under way alongside the building work, so  the gardens will have had a good head start by the time everyone settles in.",
-        "We have been fortunate with the weather. Winter can bring a building project to a standstill, and this year has been remarkably kind to us. Very little time has been lost to those wet winter days, ",
-        "One of the unexpected pleasures of the project has been watching our residents watch it. The site has drawn a steady stream of interested onlookers, and what has surprised most people is just how much work happens before a single wall goes up — the earthworks, the drainage, the water and power services, and the roading. Weeks of effort that ends up buried and out of sight, but which everything else depends upon. More than one resident has remarked that they had no idea so much was involved before a house begins to look like a house at all. ",
-        "These fourteen villas will be a wonderful addition to Highfield — new homes, new neighbours, and a natural extension of the village we already know and love. We look forward to welcoming our new residents in October.",
+        "We have been fortunate with the weather. Winter can bring a building project to a standstill, and this year has been remarkably kind to us. Very little time has been lost to those wet winter days.",
+        "One of the unexpected pleasures of the project has been watching our residents watch it. The site has drawn a steady stream of interested onlookers, and what has surprised most people is just how much work happens before a single wall goes up — the earthworks, the drainage, the water and power services, and the roading. Weeks of effort that ends up buried and out of sight, but which everything else depends upon. Residents have remarked that they had no idea so much was involved before a house begins to look like a house at all. ",
+        "These fourteen villas will be a wonderful addition to Highfield — new homes, new neighbours, and a natural extension of the village. We look forward to welcoming our new residents in October.",
         "The Highfield Team"
       ]
     },
