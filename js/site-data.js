@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-05T19:26:06.352Z
+// Published from the Staff Dashboard on 2026-08-05T19:38:59.485Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1884,6 +1884,15 @@ window.SITE_DATA = {
     }
   ],
   "news": [
+    {
+      "category": "",
+      "title": " Highfield Highlights August 2026",
+      "date": "",
+      "image": "https://raw.githubusercontent.com/Christian2405/highfield-website/main/images/uploads/hf-1785958379169-4r4rxw.jpg",
+      "paragraphs": [
+        ""
+      ]
+    },
     {
       "category": "Village News",
       "title": "Highfield Highlights December 2025",
