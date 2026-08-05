@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-05T09:03:36.464Z
+// Published from the Staff Dashboard on 2026-08-05T09:13:50.608Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -59,6 +59,19 @@ window.SITE_DATA = {
     }
   ],
   "villas": [
+    {
+      "name": "Villa 35",
+      "tag": "",
+      "beds": "",
+      "baths": "",
+      "garage": "",
+      "area": "",
+      "details": "",
+      "price": "",
+      "status": "Available Now",
+      "images": [],
+      "description": ""
+    },
     {
       "name": "Villa 10",
       "tag": "New Listing",
