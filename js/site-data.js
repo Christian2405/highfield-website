@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-10T08:25:20.745Z
+// Published from the Staff Dashboard on 2026-08-10T08:37:40.887Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -278,7 +278,7 @@ window.SITE_DATA = {
     "contact.para11": "We understand pets play an important part in people's lives. While most small domestic pets are welcome, you will need to obtain management consent before you move in.",
     "contact.para12": "Emergency call buttons are installed in your villa, with trained persons automatically notified 24 hours a day. Security gates on the front entrance require an access code after hours, and security patrols the village at intervals during the night.",
     "contact.para13": "This is your home, so you have the freedom to come and go as you please. Whether you choose to go overseas for a few months or just a short holiday, we will maintain the grounds and security so you have total peace of mind while you are away.",
-    "contact.para14": "Yes, you are welcome to maintain the garden adjoining your own home or an area allocated by the Village Manager. However, if preferred, all gardening and lawn mowing will be carried out by village staff as part of the weekly fee.",
+    "contact.para14": "Yes, you're welcome to maintain the garden adjoining your own home, or an area allocated by the Village Manager. It's entirely optional, though: all gardening and lawn mowing is carried out by village staff as part of your weekly fee",
     "contact.para15": "It is entirely your choice. Some residents choose to be totally involved while others prefer to live quietly. Your villa has been designed for easy care and personal privacy so that you're able to decide just how involved you become.",
     "contact.para16": "A retirement village of distinction in the heart of Te Awamutu, offering spacious villas, beautiful grounds, and a warm, welcoming community.",
     "gallery.heading1": "Experience Highfield Country Estate",
