@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-06T20:33:20.117Z
+// Published from the Staff Dashboard on 2026-08-10T08:24:18.946Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1862,6 +1862,10 @@ window.SITE_DATA = {
     ]
   },
   "testimonials": [
+    {
+      "quote": "From the moment I arrived I felt at home. I settled in straight away and started joining in with things — I didn't have to work up to it.\n\nWhat I love most is the company. There's always something on, and going out on trips in the van is a real highlight. You're never lonely here, but if you want time on your own, you can have it. That balance matters. And if you feel like getting your hands in the dirt, there's the garden.\n\nThe place itself is lovely — all-day sun, and it's just a neat place to be. But it's the staff who make it. They're the most beautiful people. They don't just look after us, they join in with everything, and I especially love it when they sit down and have morning tea with us.\n\nHonestly, I like everything about it.",
+      "author": "Jeanette Mainland"
+    },
     {
       "quote": "After living a lifetime in the open country on lifestyle block, we had a lot of soul searching to do when our chance came up to move into Highfield. From the start of moving and throughout the 8 months we have been here, our thanks to management & staff for a smooth move. They were all very helpful and they made us feel very welcome.\n\nThere is so much one can do: e.g. bowls, cards, evening socials etc. A real fun time had by all. Our family are happy that we are settled and enjoying our life at a slower pace",
       "author": "Francis and Pat Mason"
