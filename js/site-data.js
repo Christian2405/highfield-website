@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-10T08:24:53.409Z
+// Published from the Staff Dashboard on 2026-08-10T08:25:20.745Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -79,7 +79,7 @@ window.SITE_DATA = {
       "name": "Villa 10",
       "tag": "New Listing",
       "beds": "2 Bedrooms",
-      "baths": "1 Toilet + ! Shower",
+      "baths": "1 Toilet + 1 Shower",
       "garage": "Single Garage",
       "area": "131",
       "details": "",
