@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-09-01T00:42:36.192Z
+// Published from the Staff Dashboard on 2026-09-01T03:26:39.487Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -93,6 +93,13 @@ window.SITE_DATA = {
     }
   ],
   "team": [
+    {
+      "name": "Elaine",
+      "role": "Receptionist",
+      "image": "https://raw.githubusercontent.com/Christian2405/highfield-website/main/images/uploads/hf-1788233086208-7n54sx.jpg",
+      "bio": "Elaine is the welcoming smile and friendly voice at Highfield Country Estate. Dedicated to making every resident, family member, and visitor feel right at home, she keeps daily operations running smoothly with warmth, efficiency, and exceptional care. Whether organizing schedules or lending a listening ear, Elaine ensures our community remains a vibrant, comfortable, and supportive place for everyone.",
+      "funfact": ""
+    },
     {
       "name": "Sheryl Thomas",
       "role": "General Manager",
