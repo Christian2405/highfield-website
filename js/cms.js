@@ -119,7 +119,7 @@
   if (teamEl && data.team) {
     teamEl.innerHTML = data.team.map(function (m) {
       return '<div class="team-member" onclick="this.classList.toggle(\'expanded\')" style="cursor:pointer;">' +
-        '<div class="team-photo"><img src="' + esc(m.image) + '" alt="' + esc(m.name) + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>' +
+        '<div class="team-photo"><img src="' + esc(m.image) + '" alt="' + esc(m.name) + '" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;"></div>' +
         '<h3>' + esc(m.name) + '</h3>' +
         '<p>' + esc(m.role) + '</p>' +
         '<div class="team-bio">' +
