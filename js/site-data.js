@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-08-10T08:38:22.922Z
+// Published from the Staff Dashboard on 2026-09-01T00:42:36.192Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -276,7 +276,7 @@ window.SITE_DATA = {
     "contact.para9": "Highfield Country Estate management requires that you must be over 65 years of age, and at the time you purchase an Occupation Right Agreement you must be in good health.",
     "contact.para10": "Yes! Your villa at Highfield Country Estate is your home, and family and friends are encouraged to visit as often as they wish. You can entertain them in your villa or in the community centre, where your guests are welcome to use the facilities as long as you are present with them.",
     "contact.para11": "We understand pets play an important part in people's lives. While most small domestic pets are welcome, you will need to obtain management consent before you move in.",
-    "contact.para12": "Emergency call buttons are installed in your villa, with trained persons automatically notified 24 hours a day. Security gates on the front entrance require an access code after hours, and security patrols the village at intervals during the night.",
+    "contact.para12": "Emergency call buttons are installed in your villa, monitored 24 hours for fire and medical emergencies. Security gates on the front entrance require an access code after hours, and security patrols the village at intervals during the night.",
     "contact.para13": "This is your home, so you have the freedom to come and go as you please. Whether you choose to go overseas for a few months or just a short holiday, we will maintain the grounds and security so you have total peace of mind while you are away.",
     "contact.para14": "Yes, you're welcome to maintain the garden adjoining your own home, or an area allocated by the Village Manager. It's entirely optional, though: all gardening and lawn mowing is carried out by village staff as part of your weekly fee",
     "contact.para15": "It is entirely your choice. Some residents choose to be totally involved while others prefer to live quietly. Your villa has been designed for easy care and personal privacy so that you're able to decide just how involved you become.",
