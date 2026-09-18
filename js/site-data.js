@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-09-18T02:25:23.139Z
+// Published from the Staff Dashboard on 2026-09-18T03:03:42.219Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1897,6 +1897,21 @@ window.SITE_DATA = {
     }
   ],
   "news": [
+    {
+      "category": "Village News",
+      "title": "Highfield Highlights September 2026",
+      "date": "September 2026",
+      "image": "https://raw.githubusercontent.com/Christian2405/highfield-website/main/images/uploads/hf-1789699072782-kww2nc.jpg",
+      "paragraphs": [
+        "The villas are almost there. What's left is the road — final preparation of the base is under way, with asphalt to follow, and once that's down we'll be very close to finished.",
+        "When we wrote about the development a month ago, what had struck our residents most was how much work went in before a single wall went up — the earthworks, the drainage, the water and power, and the roading. The road is where we started, and it's where we'll finish.",
+        "The rest has come along well in the meantime. The villa exteriors are now largely complete, and the difference is clear: what was a building site a few months ago now looks like a street of homes. The gardens have gone in and the lawns are down, so the planting has had the great head.",
+        "Our first residents move in, less than a fortnight away, and we're looking forward to it.",
+        "Thanks, too, to our existing residents for their patience. A project this size brings some noise, dust and a good deal of coming and going, and it's been taken in good humour — not least by those who made the site a daily walking destination and kept a close eye on our progress.",
+        "Fourteen new villas, new neighbours, and a natural extension of the village. We look forward to welcoming everyone in October.",
+        "The Highfield Team"
+      ]
+    },
     {
       "category": "Village Extension News",
       "title": " Highfield Highlights August 2026",
