@@ -1,6 +1,6 @@
 // ============================================================
 // HIGHFIELD COUNTRY ESTATE — SITE CONTENT
-// Published from the Staff Dashboard on 2026-09-18T02:23:31.988Z
+// Published from the Staff Dashboard on 2026-09-18T02:25:23.139Z
 // ============================================================
 window.SITE_DATA = {
   "awards": [
@@ -1898,9 +1898,9 @@ window.SITE_DATA = {
   ],
   "news": [
     {
-      "category": "",
+      "category": "Village Extension News",
       "title": " Highfield Highlights August 2026",
-      "date": "",
+      "date": "August 2026",
       "image": "https://raw.githubusercontent.com/Christian2405/highfield-website/main/images/uploads/hf-1785958379169-4r4rxw.jpg",
       "paragraphs": [
         "There's plenty happening around village at the moment, and we're delighted to share how well our new villa development is coming along.",
